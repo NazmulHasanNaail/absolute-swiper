@@ -1,0 +1,403 @@
+.post-type-absolute_swiper .swiperjsSection {
+    box-sizing: border-box;
+    position  : relative;
+    margin    : 0;
+    border    : 0;
+    background: #fcfcfc;
+    width     : 100%;
+    display   : table;
+}
+
+.post-type-absolute_swiper .swiperjsSection h1 {
+    font-size: 30px;
+    margin   : 0;
+    padding  : 0;
+}
+
+.post-type-absolute_swiper .swiperjsSection .tabSec {
+    display: none;
+}
+
+.post-type-absolute_swiper .swiperjsSection .tabSec h3 {
+    border-bottom : 1px solid #eeeeee;
+    padding       : 10px 15px;
+    margin        : 0;
+    font-size     : 14px;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide table {
+    width          : 100%;
+    border         : 0;
+    border-collapse: collapse;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide table tr:nth-child(even) td {
+    background: #ffffff;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide table td {
+    width        : 20%;
+    padding      : 10px 15px;
+    border-bottom: 1px solid #eeeeee;
+    min-width    : 130px;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide table td ul {
+    margin-bottom: 0;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide table td+td {
+    width      : 80%;
+    border-left: 1px solid #eeeeee;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide input[type="text"] {
+    width: 100%;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide td>label {
+    display    : block;
+    font-weight: 500;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide span {
+    font-size: 12px;
+    display  : block;
+    margin   : 0 0 5px 0;
+    color    : #8c8c8c;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide td ul li {
+    display     : inline-block;
+    margin-right: 10px;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide td ul li input {
+    margin-right: 5px;
+}
+
+.post-type-absolute_swiper .swiperjsSection .hiddenData {
+    position: relative;
+}
+
+.post-type-absolute_swiper .swiperjsSection .hiddenData:after {
+    content   : '';
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    right     : 0;
+    bottom    : 0;
+    background: rgba(247, 247, 247, 0.85);
+    z-index   : 2;
+}
+
+.post-type-absolute_swiper .swiperjsSection .hiddenData ::selection {
+    background: transparent;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side {
+    width         : 250px;
+    margin        : 0;
+    background    : #ffffff;
+    border-right  : 1px solid #eeeeee;
+    display       : table-cell;
+    vertical-align: top;
+    position      : relative;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li {
+    margin       : 0;
+    border-bottom: 1px solid #eeeeee;
+    outline      : none;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li.active a,
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li:hover a {
+    background: #eeeeee;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li.active,
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li:hover {
+    border-color: #eeeeee;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li.active a:after {
+    display: block;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li:first-child {
+    border-top: 0px;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li a {
+    display        : block;
+    padding        : 10px 15px;
+    background     : #ffffff;
+    position       : relative;
+    outline        : none;
+    text-decoration: none;
+    font-size      : 13px;
+    text-transform : capitalize;
+    letter-spacing : 0px;
+    font-weight    : 500;
+    color          : #1e70cd;
+}
+
+.post-type-absolute_swiper .swiperjsSection .nav-tab-side li a:focus {
+    box-shadow: none;
+}
+
+.post-type-absolute_swiper .swiperjsSection .rightSide {
+    display       : table-cell;
+    vertical-align: top;
+    padding       : 0;
+}
+
+.post-type-absolute_swiper .swiperjsSection.wrap div.updated,
+.post-type-absolute_swiper .swiperjsSection.wrap .notice {
+    margin: 5px -20px -19px;
+}
+
+.post-type-absolute_swiper .gallery-form-table {
+    width        : 100%;
+    margin-bottom: 5px;
+    overflow     : hidden;
+}
+
+.post-type-absolute_swiper .gallery-form-table ul#gallery-metabox-list {
+    margin   : 0;
+    font-size: 0;
+}
+
+.post-type-absolute_swiper .gallery-form-table ul#gallery-metabox-list li {
+    display       : inline-block;
+    vertical-align: top;
+    border        : 1px solid #eeeeee;
+    padding       : 5px;
+    margin        : 3px 4px;
+    background    : #ffffff;
+    cursor        : move;
+    width         : auto;
+    float         : none;
+    text-align    : center;
+}
+
+.post-type-absolute_swiper .gallery-form-table ul#gallery-metabox-list li.ui-sortable-placeholder {
+    min-height: 170px;
+    border    : 3px dashed #cccccc;
+    visibility: visible !important;
+}
+
+.post-type-absolute_swiper .gallery-add span {
+    margin: 4px 3px 0 -4px;
+}
+
+.post-type-absolute_swiper .actionButtons {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.post-type-absolute_swiper .actionButtons .button {
+    width : calc(50% - 4px);
+    margin: 0 2px;
+}
+
+.post-type-absolute_swiper .actionButtons .remove-image {
+    background: rgba(170, 0, 0, 0.65);
+    border    : 0;
+    color     : #ffffff;
+}
+
+.post-type-absolute_swiper .actionButtons .remove-image:hover {
+    background: rgba(170, 0, 0, 0.75);
+    color     : #ffffff;
+}
+
+.post-type-absolute_swiper .actionButtons .remove-image .dashicons {
+    vertical-align: middle;
+}
+
+.post-type-absolute_swiper .actionButtons .button.change-image {
+    border-color: #cdcdcd;
+}
+
+.post-type-absolute_swiper #swiper-js-slider-settings .inside {
+    margin : 0;
+    padding: 0;
+}
+
+.post-type-absolute_swiper .addfooter {
+    position  : relative;
+    padding   : 10px 10px 0;
+    border-top: 1px solid #eeeeee;
+    margin    : 10px -12px 0;
+    text-align: right;
+}
+
+.post-type-absolute_swiper .gallery-form-table .noDataFound {
+    text-align: center;
+    display   : none;
+}
+
+.post-type-absolute_swiper .addfooter .removeAll {
+    float           : left;
+    background-color: #c85959;
+    background      : rgba(170, 0, 0, 0.65);
+    border          : 0;
+    color           : #ffffff;
+    line-height     : 30px;
+}
+
+.post-type-absolute_swiper .addfooter .removeAll:hover,
+.post-type-absolute_swiper .addfooter .removeAll:focus {
+    background: rgba(170, 0, 0, 0.75);
+    color     : #ffffff;
+}
+
+.post-type-absolute_swiper .addfooter .removeAll .dashicons {
+    vertical-align: middle;
+    font-size     : 18px;
+}
+
+.post-type-absolute_swiper .footerRight {
+    position  : relative;
+    padding   : 10px;
+    border-top: 1px solid #eeeeee;
+    margin    : 0;
+}
+
+.post-type-absolute_swiper .footerRight ul li {
+    vertical-align: middle;
+}
+
+.post-type-absolute_swiper .shortcodeWrap {
+    padding   : 10px;
+    border    : 1px solid #ececec;
+    margin    : 10px 0 0;
+    background: rgba(238, 238, 238, 0.42)
+}
+
+.post-type-absolute_swiper .shortcodeWrap h4 {
+    margin     : 0 0 6px 0;
+    font-size  : 12px;
+    font-weight: 500;
+}
+
+.post-type-absolute_swiper .shortcodeWrap input {
+    font-size  : 12px;
+    font-weight: 500;
+    padding    : 5px;
+}
+
+.post-type-absolute_swiper .shortcodeWrap .copyData {
+    display   : block;
+    text-align: right;
+    font-size : 11px;
+    margin    : 5px 0 0 0;
+}
+
+.post-type-absolute_swiper .saveAll .dashicons {
+    vertical-align: middle;
+    font-size     : 16px;
+    margin        : 2px 1px 0 0;
+}
+
+.post-type-absolute_swiper #poststuff .stuffbox>h3,
+.post-type-absolute_swiper #poststuff h2,
+.post-type-absolute_swiper #poststuff h3.hndle {
+    background: #1e70cd;
+    color     : #ffffff;
+}
+
+.post-type-absolute_swiper .accordion-section-title:after,
+.post-type-absolute_swiper .handlediv,
+.item-edit,
+.post-type-absolute_swiper .postbox .handlediv.button-link,
+.post-type-absolute_swiper .toggle-indicator {
+    color: #ffffff;
+}
+
+.post-type-absolute_swiper.wp-core-ui .button-primary {
+    background: #1e70cd;
+}
+
+.post-type-absolute_swiper .shortcode.column-shortcode .copyData {
+    display   : block;
+    text-align: left;
+    font-size : 11px;
+    margin    : 5px 0 0 0;
+}
+
+.post-type-absolute_swiper .column-image {
+    width: 85px !important;
+}
+
+.post-type-absolute_swiper .column-image .imgCount {
+    display      : block;
+    text-align   : center;
+    border       : 0;
+    border-bottom: 0;
+    background   : #1f73d2;
+    font-size    : 11px;
+    font-weight  : 600;
+    color        : #ffffff;
+    padding      : 2px 0;
+}
+
+.post-type-absolute_swiper .column-image img {
+    width  : 100%;
+    display: inherit;
+}
+
+.post-type-absolute_swiper .widefat td,
+.post-type-absolute_swiper .widefat td ol,
+.post-type-absolute_swiper .widefat td p,
+.post-type-absolute_swiper .widefat td ul {
+    vertical-align: middle;
+}
+
+.post-type-absolute_swiper .searchHead {
+    position     : relative;
+    padding      : 10px;
+    border-bottom: 1px solid #eeeeee;
+    margin       : 0;
+}
+
+.post-type-absolute_swiper .dtbl {
+    display: table;
+    width  : 100%;
+    margin : 0;
+}
+
+.post-type-absolute_swiper .dtbl li {
+    display: table-cell;
+}
+
+.post-type-absolute_swiper .searchHead .searchFilter {
+    text-align: right;
+}
+
+.post-type-absolute_swiper .searchHead .searchFilter input {
+    padding  : 5px 10px;
+    min-width: 300px;
+}
+
+.post-type-absolute_swiper .hidden {
+    display: none;
+}
+
+.post-type-absolute_swiper .text-right {
+    text-align: right;
+}
+
+.post-type-absolute_swiper.wp-core-ui .button.addShortCode {
+    background : #1e70cd;
+    color      : #ffffff;
+    border     : 0;
+    line-height: 27px;
+}
+
+.post-type-absolute_swiper.wp-core-ui .button.addShortCode img {
+    margin : -2px 2px 0 0;
+    padding: 0;
+}
