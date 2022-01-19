@@ -401,3 +401,9 @@
     margin : -2px 2px 0 0;
     padding: 0;
 }
+
+#swiper-js-slider-postType label{
+    display: inline-block;
+    width: 140px;
+    font-weight: 500;
+}

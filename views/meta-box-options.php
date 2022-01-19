@@ -30,7 +30,7 @@ class Absolute_Custom_Meta_Box {
     public function add_metabox() {
     	add_meta_box(
             'swiper-js-slider-postType',
-            'Select Post Type',
+            'Post Type',
             array( $this, 'render_metabox_postType' ),
             $this->post_type,
             'advanced',
