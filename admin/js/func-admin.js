@@ -54,7 +54,7 @@ jQuery(function($) {
                     index = listIndex + (i + 1);
                 var html =
                     '<li>'+
-                        '<input type="hidden" name="_s_s_m_gallery_id[' + index + ']" value="' + attachment.id + '">'+
+                        '<input type="hidden" name="_s_s_m_slider_post[gallery][' + index + ']" value="' + attachment.id + '">'+
                         '<img class="image-preview" src="' + attachment.sizes.thumbnail.url + '">'+
                         '<div class="actionButtons">'+
                             '<a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">'+

@@ -18,41 +18,39 @@ function absolute_swiper_shortcode($atts) {
     $meta_prefix   = '_s_s_m_';
     $post_type     = 'absolute_swiper';
 
-    $postType       = get_post_meta($atts['id'], $meta_prefix.'postType', true);
-    $postCat        = get_post_meta($atts['id'], $meta_prefix.'postCat', true);
+    $slider_post   = get_post_meta($atts['id'], $meta_prefix.'slider_post', true);
+    $postType = $slider_post['type'];
 
-    if($postCat == 'all'){
-        $cat_name = '';
+    if($postType == 'absolute_swiper'){
+
+        $args = array( 
+            'post_type'         => $postType,
+            'posts_per_page'    => 1,
+        );
+
     }else{
-        $cat_name = $postCat;
-    }
-    if($postType == $post_type ){
-        $postPerPage = -1;
-    }{
-        $postPerPage = 10;
-    }
-    if($postType == 'product'){
-        $args = array( 
-            'post_type'         => $postType,
-            'posts_per_page'    => $postPerPage,
-            'product_cat' => $cat_name,
-            'orderby' => 'title'
-        );
-    }
-    if($postType == 'post'){
-        $args = array( 
-            'post_type'         => $postType,
-            'posts_per_page'    => $postPerPage,
-            'category_name' => $cat_name,
-        );
-    }
-    if($postType == $post_type ){
-        $args = array( 
-            'post_type'         => $postType,
-            'posts_per_page'    => $postPerPage,
-        );
-    }
 
+        $postcat = $slider_post['category'];
+
+        if($postType == 'product'){
+            
+            $args = array( 
+                'post_type'         => $postType,
+                'posts_per_page'    => -1,
+                'product_cat' => $postcat,
+                'orderby' => 'title'
+            );
+
+        }else{
+
+            $args = array( 
+                'post_type'         => $postType,
+                'posts_per_page'    => -1,
+                'category_name' => $postcat,
+                'orderby' => 'title'
+            );
+        }
+    }
 
     $my_query = null;
     $my_query = new WP_Query($args);
@@ -167,7 +165,14 @@ function absolute_swiper_shortcode($atts) {
 
             while ($my_query->have_posts()) : $my_query->the_post();
                 if($postType == 'absolute_swiper'){
-                    $ids = get_post_meta(get_the_ID(), $meta_prefix.'gallery_id', true);
+
+                    if(array_key_exists("gallery", $slider_post)){
+                        $ids = $slider_post['gallery'];
+                    }else{
+                        $ids = '';
+                    }
+                    
+                   
                     ?>
                     <?php if ($ids) : foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value, 'full'); ?>
                         <div class="swiper-slide">
@@ -186,13 +191,16 @@ function absolute_swiper_shortcode($atts) {
                             ?>
                             <time datetime="<?php echo esc_attr(get_the_date('c')); ?>" itemprop="datePublished"><?php echo esc_html(get_the_date('d M Y')); ?></time>
 
-                            <?php $product = wc_get_product( get_the_ID() );
-                            if($product): /* get the WC_Product Object */ 
+                            <?php
+                            if ( class_exists( 'WooCommerce' ) ){
+                                $product = wc_get_product( get_the_ID() );
+                                if($product): /* get the WC_Product Object */ 
+                                ?>
+                                <span class="price"><?php echo $product->get_price_html(); ?></span>
+                               <?php
+                               endif;
+                            } 
                             ?>
-                            <span class="price"><?php echo $product->get_price_html(); ?></span>
-                           <?php
-                           endif;
-                           ?>
                            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="btn">link</a>
                         </div>
                     </div> 
@@ -215,15 +223,9 @@ function absolute_swiper_shortcode($atts) {
     </div>
 
     <?php 
-            }else{ 
-                _e( 'Sorry, no slider were found.', 'textdomain' );
-                //die;
-            }
-        ?>
-    
- 
-<?php
-
+    }else{ 
+        _e( 'Sorry, no slider were found.', 'textdomain' );
+    }
 
     $html = ob_get_clean();
     return $html;

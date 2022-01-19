@@ -5,23 +5,29 @@ class Absolute_Custom_Meta_Box {
 	public $meta_prefix = '_s_s_m_';
 	public $post_type = 'absolute_swiper';
 
-    /* Constructor. */
+    /* 
+     * Constructor. 
+     */
     public function __construct() {
         if ( is_admin() ) {
             add_action( 'load-post.php',     array( $this, 'init_metabox' ) );
             add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+            add_action('wp_ajax_absp_slider_ajax', array($this, 'wp_ajax_absp_slider_ajax_handler_fn'));
         }
     }
  
-    /* Meta box initialization. */
+    /*
+     * Meta box initialization. 
+     */
     public function init_metabox() {
         add_action( 'add_meta_boxes', array( $this, 'add_metabox'  )        );
         add_action( 'save_post',      array( $this, 'save_metabox' ), 10, 2 );
     }
  
-    /* Adds the meta box section. */
-    public function add_metabox($post) {
-        global $post;
+    /*
+     * Adds the meta box section.
+     */
+    public function add_metabox() {
     	add_meta_box(
             'swiper-js-slider-postType',
             'Select Post Type',
@@ -30,27 +36,6 @@ class Absolute_Custom_Meta_Box {
             'advanced',
             'high'
         );
-
-        $postType    = get_post_meta($post->ID, $this->meta_prefix.'postType', true);
-        if($postType == 'absolute_swiper'){   
-            add_meta_box(
-                'swiper-js-slider-gallery',
-                'Slide Images',
-                array( $this, 'render_metabox_gallery' ),
-                $this->post_type,
-                'advanced',
-                'high'
-            );
-        }else{
-            add_meta_box(
-                'swiper-js-slider-post-cat',
-                'Select Post Category',
-                array( $this, 'render_metabox_post_cat' ),
-                $this->post_type,
-                'advanced',
-                'high',
-            );
-        }
         add_meta_box(
             'swiper-js-slider-settings',
             'Settings',
@@ -69,140 +54,69 @@ class Absolute_Custom_Meta_Box {
         );
     }
 
- 
-    /* Renders the meta box. */
-    public function render_metabox_post_cat( $post ) {
-        global $post;
-
-        wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); 
-        $postType    = get_post_meta($post->ID, $this->meta_prefix.'postType', true);
-        $postCat    = get_post_meta($post->ID, $this->meta_prefix.'postCat', true);
-        ?>
-	    <div class="post-title-form-table">
-            <select name="<?php echo $this->meta_prefix; ?>postCat">
-                <option value="all" <?php selected($postCat, 'Any') ?> >Any</option>
-
-                <?php
-                if( $postType == 'post'){
-                    $args = array(
-                        'type'                     => 'dining',
-                        'child_of'                 => 0,
-                        'parent'                   => '',
-                        'orderby'                  => 'name',
-                        'order'                    => 'ASC',
-                        'hide_empty'               => 1,
-                        'hierarchical'             => 1,
-                        'taxonomy'                 => 'category',
-                        'pad_counts'               => false 
-                    );
-                    $categories = get_categories($args);
-                }else if( $postType == 'product' ){
-                    $args = array(
-                        'type'                     => 'dining',
-                        'child_of'                 => 0,
-                        'parent'                   => '',
-                        'orderby'                  => 'name',
-                        'order'                    => 'ASC',
-                        'hide_empty'               => 1,
-                        'hierarchical'             => 1,
-                        'taxonomy'                 => 'product_cat',
-                        'pad_counts'               => false 
-                    );
-                    $categories = get_categories($args);
-                }else{
-                    return ;
-                }
-                if($categories ):
-                foreach($categories as $category) {
-                    ?>
-                    <option value="<?php echo $category->name ?>"  <?php selected($postCat, $category->name ) ?> ><?php echo $category->name ?></option>
-                <?php
-                 }
-                endif;
-                ?>
-
-            </select>
-        </div>
-        
-        <?php
-    }
+    /*
+     * Renders the meta box..
+     */
     public function render_metabox_postType( $post ) {
         global $post;
 
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); 
-        $postType    = get_post_meta($post->ID, $this->meta_prefix.'postType', true);
+        $slider_post    = get_post_meta($post->ID, $this->meta_prefix."slider_post", true);
+
+        if( $slider_post){
+            $post_type = $slider_post['type'];
+        }else{
+            $post_type = '';
+        }
+        $post_ID = $post->ID;
+        
+        
         ?>
 	    <div class="post-type-form-table">
-            <select name="<?php echo $this->meta_prefix; ?>postType">
-                <option value="post" <?php selected($postType, 'post') ?>>post</option>
-                <option value="product" <?php selected($postType, 'product') ?>>product</option>
-                <option value="absolute_swiper" <?php selected($postType, 'absolute_swiper') ?>>custom slider</option>
+            <label for="slider_post_type">Select Post Type</label>
+            <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type" data_id="<?php echo $post_ID ?>">
+            <?php
+            $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
+            unset( $get_post_types['attachment'] );
+            unset( $get_post_types['page'] );
+            foreach ( $get_post_types as $get_post_type ) {
+                ?>
+                <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?> ><?php echo $get_post_type; ?></option>
+                <?php
+                }
+             ?>
             </select>
-        </div>
+        </div><br>
+        <div class="postCategory-wrapper" id="postCategory-wrapper">
+
+       </div>
+
+       <script>
+            jQuery(function ($){
+                    $('#slider_post_type').on('change', showCategory)
+
+                    function showCategory(){
+
+                    let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
+                    let postType =  $('#slider_post_type').val();
+                    let post_id =  $('#slider_post_type').attr('data_id');
+
+                    var data = {
+                        'action': 'absp_slider_ajax',
+                        'post_type': postType,
+                        'post_id' : post_id,
+                    };
+
+                    $.post(ajax_url, data, function(response){
+                        $('#postCategory-wrapper').html(response);
+                    });
+                
+                }
+                showCategory();
+            });
+        </script>
         
         <?php
-    }
-
-    public function render_metabox_gallery( $post ) {
-        // Add nonce for security and authentication.
-        global $post;
-        
-        // Add nonce for security and authentication.
-        wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' );
-        
-        // Use get_post_meta to retrieve an existing value from the database.
-		$ids = get_post_meta($post->ID, $this->meta_prefix.'gallery_id', true);
-
-        // Display the form, using the current value.
-        ?>
-	    <div class="gallery-form-table" >
-            <ul id="gallery-metabox-list">
-                <?php if ($ids) { ?>
-                    <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
-                      <li>
-                        <input type="hidden" name="<?php echo $this->meta_prefix; ?>gallery_id[<?php echo $key; ?>]" value="<?php echo $value; ?>">
-                        <img class="image-preview" src="<?php echo $image[0]; ?>">
-                        <div class="actionButtons">
-                            <a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">
-                                <span class="dashicons dashicons-edit"></span>
-                            </a>
-                            <a class="remove-image button button-small" href="#">
-                                <span class="dashicons dashicons-no-alt"></span>
-                            </a>
-                        </div>
-                      </li>
-                    <?php endforeach; ?>
-                <?php } ?>
-            </ul>
-            <h4 class="noDataFound">No Images Selected.</h4>
-        </div>
-        
-        <div class="addfooter">
-            <a href="#" class="removeAll button button-secondary button-large">
-                <span class="dashicons dashicons-trash"></span> 
-                Empty Slider
-            </a>
-            <a href="#" class="saveAll button button-primary button-large">
-                <span class="dashicons dashicons-admin-tools"></span>
-                Save
-            </a>
-            <a  class="gallery-add button button-primary button-large" 
-                href="#" 
-                data-uploader-title="Add image(s) to gallery" 
-                data-uploader-button-text="Add image(s)">
-                    <span class="dashicons dashicons-plus-alt"></span> 
-                    Add Images
-            </a>
-        </div>
-
-        <?php
-    }
-
-    public function as_checkit($name, $array, $value){
-        $result = '';
-        if (is_array($array) && isset($array[$name])){ $result = $array[$name]; }
-        if($result == ''){ $result = $value; }
-        return $result;
     }
 
     public function render_metabox_settings( $post ) {
@@ -268,6 +182,110 @@ class Absolute_Custom_Meta_Box {
         <?php
     }
  
+    /*
+     * post Type ajax handled .
+     */
+    public function wp_ajax_absp_slider_ajax_handler_fn( ){
+
+        $post_type = $_REQUEST['post_type'];
+        $post_ID = $_REQUEST['post_id'];
+        $slider_post    = get_post_meta($post_ID, $this->meta_prefix."slider_post", true);
+
+        if( $post_type !== 'absolute_swiper' ){
+
+            $post_category = $slider_post['category'];
+            
+
+            if( $post_type == 'product'){
+                $cat = 'product_cat';
+            }else{
+                $cat = 'category';
+            }
+            
+            $args = array(
+                'taxonomy' => $cat,
+                'hide_empty' => 1,
+            );
+
+            $all_categories = get_categories($args);
+
+            ?>
+            <label for="slider_post_cat">Select Post Category</label>
+            <select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
+                <?php
+                foreach($all_categories as $category){
+                    ?>
+                    <option value="<?php echo  $category->name ?>" <?php selected($post_category, $category->name) ?>  ><?php echo $category->name ?></option>
+                    <?php
+                }
+                ?>
+            </select>
+        <?php
+        }else{
+
+            // Use get_post_meta to retrieve an existing value from the database.
+            $ids = $slider_post['gallery'];
+
+            // Display the form, using the current value.
+            ?>
+            <div class="gallery-form-table" >
+                <ul id="gallery-metabox-list">
+                    <?php if ($ids) { ?>
+                        <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
+                        <li>
+                            <input type="hidden" name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]" value="<?php echo $value; ?>">
+                            <img class="image-preview" src="<?php echo $image[0]; ?>">
+                            <div class="actionButtons">
+                                <a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">
+                                    <span class="dashicons dashicons-edit"></span>
+                                </a>
+                                <a class="remove-image button button-small" href="#">
+                                    <span class="dashicons dashicons-no-alt"></span>
+                                </a>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    <?php } ?>
+                </ul>
+                <h4 class="noDataFound">No Images Selected.</h4>
+            </div>
+            
+            <div class="addfooter">
+                <a href="#" class="removeAll button button-secondary button-large">
+                    <span class="dashicons dashicons-trash"></span> 
+                    Empty Slider
+                </a>
+                <a href="#" class="saveAll button button-primary button-large">
+                    <span class="dashicons dashicons-admin-tools"></span>
+                    Save
+                </a>
+                <a  class="gallery-add button button-primary button-large" 
+                    href="#" 
+                    data-uploader-title="Add image(s) to gallery" 
+                    data-uploader-button-text="Add image(s)">
+                        <span class="dashicons dashicons-plus-alt"></span> 
+                        Add Images
+                </a>
+            </div>
+
+        <?php
+        }
+        die;
+    }
+    
+    /**
+     * Handles chacking the meta box value.
+     *
+     * @param int $name name.
+     * @param int $array array.
+     * @param int $value value.
+     */
+    public function as_checkit($name, $array, $value){
+        $result = '';
+        if (is_array($array) && isset($array[$name])){ $result = $array[$name]; }
+        if($result == ''){ $result = $value; }
+        return $result;
+    }
     /**
      * Handles saving the meta box.
      *
@@ -307,9 +325,7 @@ class Absolute_Custom_Meta_Box {
         $this->as_updatePostMeta($post_id, $this->meta_prefix, 'setting_pagination');
         $this->as_updatePostMeta($post_id, $this->meta_prefix, 'setting_navigation');
         $this->as_updatePostMeta($post_id, $this->meta_prefix, 'setting_breakpoints');
-        $this->as_updatePostMeta($post_id, $this->meta_prefix, 'postType');
-        $this->as_updatePostMeta($post_id, $this->meta_prefix, 'postCat');
-        $this->as_updatePostMeta($post_id, $this->meta_prefix, 'gallery_id');
+        $this->as_updatePostMeta($post_id, $this->meta_prefix, 'slider_post');
     }
 
     function as_sanitize_text_or_array_field($array_or_string) {
@@ -318,7 +334,7 @@ class Absolute_Custom_Meta_Box {
         }elseif( is_array($array_or_string) ){
             foreach ( $array_or_string as $key => &$value ) {
                 if ( is_array( $value ) ) {
-                    $value = as_sanitize_text_or_array_field($value);
+                    // $value = as_sanitize_text_or_array_field($value);
                 }
                 else {
                     $value = sanitize_text_field( $value );
