@@ -19,41 +19,45 @@ function absolute_swiper_shortcode($atts) {
     $post_type     = 'absolute_swiper';
 
     $slider_post   = get_post_meta($atts['id'], $meta_prefix.'slider_post', true);
-    $postType = $slider_post['type'];
 
-    if($postType == 'absolute_swiper'){
+    if( !empty($slider_post) ){
+        $postType = $slider_post['type'];
 
-        $args = array( 
-            'post_type'         => $postType,
-            'posts_per_page'    => 1,
-        );
-
-    }else{
-
-        $postcat = $slider_post['category'];
-
-        if($postType == 'product'){
-            
+        if($postType == 'absolute_swiper'){
+    
             $args = array( 
                 'post_type'         => $postType,
-                'posts_per_page'    => -1,
-                'product_cat' => $postcat,
-                'orderby' => 'title'
+                'posts_per_page'    => 1,
             );
-
+    
         }else{
-
-            $args = array( 
-                'post_type'         => $postType,
-                'posts_per_page'    => -1,
-                'category_name' => $postcat,
-                'orderby' => 'title'
-            );
+    
+            $postcat = $slider_post['category'];
+    
+            if($postType == 'product'){
+                
+                $args = array( 
+                    'post_type'         => $postType,
+                    'posts_per_page'    => -1,
+                    'product_cat' => $postcat,
+                    'orderby' => 'title'
+                );
+    
+            }else{
+    
+                $args = array( 
+                    'post_type'         => $postType,
+                    'posts_per_page'    => -1,
+                    'category_name' => $postcat,
+                    'orderby' => 'title'
+                );
+            }
         }
+    
+        $my_query = null;
+        $my_query = new WP_Query($args);
     }
 
-    $my_query = null;
-    $my_query = new WP_Query($args);
 
     ob_start();
     if ( $my_query->have_posts() ) {
