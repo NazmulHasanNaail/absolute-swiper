@@ -8,14 +8,14 @@ jQuery(function($) {
         var sjs_post_action = $('#post').attr('action');
         $('.nav-tab-side').find('.active').removeClass('active');
         $('.nav-tab-side li').find('a[href="' + sjs_current_tab + '"]').parent('li').addClass('active');
-        $('.swiperjsSection .rightSide .tabSec').hide();
-        $('.swiperjsSection .rightSide '+ sjs_current_tab).fadeIn();
+        $('.absoluteSwiperSettingsSection .rightSide .tabSec').hide();
+        $('.absoluteSwiperSettingsSection .rightSide '+ sjs_current_tab).fadeIn();
         if (sjs_post_action) {
             sjs_post_action = sjs_post_action.split('#')[0];
             $('#post').attr('action', sjs_post_action + window.location.hash);
         }
     }else{
-        $('.swiperjsSection .rightSide .tabSec').first().fadeIn();
+        $('.absoluteSwiperSettingsSection .rightSide .tabSec').first().fadeIn();
     }
 
 
@@ -54,7 +54,7 @@ jQuery(function($) {
                     index = listIndex + (i + 1);
                 var html =
                     '<li>'+
-                        '<input type="hidden" name="_s_s_m_slider_post[gallery][' + index + ']" value="' + attachment.id + '">'+
+                        '<input type="hidden" name="_absolute_swiper_slider_post[gallery][' + index + ']" value="' + attachment.id + '">'+
                         '<img class="image-preview" src="' + attachment.sizes.thumbnail.url + '">'+
                         '<div class="actionButtons">'+
                             '<a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">'+
@@ -152,7 +152,7 @@ jQuery(function($) {
     
     makeSortable();
 
-    $('body').on('click', '.swiperjsSection .nav-tab-side li a', function(e){
+    $('body').on('click', '.absoluteSwiperSettingsSection .nav-tab-side li a', function(e){
         e.preventDefault();
         var t = $(this),
             v = t.attr('href'),
@@ -161,8 +161,8 @@ jQuery(function($) {
             b = ((typeof t.attr('href') !== 'undefined') ? t.attr('href') : d);
         $('.nav-tab-side li').removeClass('active');
         t.closest('li').addClass('active');
-        $('.swiperjsSection .rightSide .tabSec').hide();
-        $('.swiperjsSection .rightSide '+v).fadeIn();
+        $('.absoluteSwiperSettingsSection .rightSide .tabSec').hide();
+        $('.absoluteSwiperSettingsSection .rightSide '+v).fadeIn();
 
         if (s === '1') {
             window.location.hash = b.split('#').join('#!');
@@ -187,11 +187,11 @@ jQuery(function($) {
 
         if ( searchVal != '' ) {
             filterItems.addClass('hidden');
-            $('.swiperjsSection .rightSide .tabSec').show();
+            $('.absoluteSwiperSettingsSection .rightSide .tabSec').show();
             $('[data-filter-item][data-filter-name*="' + searchVal + '"]').removeClass('hidden');
         } else {
-            $('.swiperjsSection .rightSide .tabSec').hide();
-            var getActive = $('.swiperjsSection .nav-tab-side li.active a').attr('href');
+            $('.absoluteSwiperSettingsSection .rightSide .tabSec').hide();
+            var getActive = $('.absoluteSwiperSettingsSection .nav-tab-side li.active a').attr('href');
             $(getActive).fadeIn();
             filterItems.removeClass('hidden');
         }

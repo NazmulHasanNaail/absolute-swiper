@@ -2,7 +2,7 @@
 
 class Absolute_Custom_Meta_Box {
 
-	public $meta_prefix = '_s_s_m_';
+	public $meta_prefix = '_absolute_swiper_';
 	public $post_type = 'absolute_swiper';
 
     /* 
@@ -29,7 +29,7 @@ class Absolute_Custom_Meta_Box {
      */
     public function add_metabox() {
     	add_meta_box(
-            'swiper-js-slider-postType',
+            'absolute-swiper-js-slider-postType',
             'Post Type',
             array( $this, 'render_metabox_postType' ),
             $this->post_type,
@@ -37,7 +37,7 @@ class Absolute_Custom_Meta_Box {
             'high'
         );
         add_meta_box(
-            'swiper-js-slider-settings',
+            'absolute-swiper-js-slider-settings',
             'Settings',
             array( $this, 'render_metabox_settings' ),
             $this->post_type,
@@ -45,7 +45,7 @@ class Absolute_Custom_Meta_Box {
             'high'
         );
         add_meta_box(
-            's-j-s-shortcode',
+            'absolute-swiper-js-slider-shortcode',
             'Shortcode',
             array( $this, 'render_metabox_shortcode' ),
             $this->post_type,
@@ -71,52 +71,54 @@ class Absolute_Custom_Meta_Box {
         $post_ID = $post->ID;
         
         
-        ?>
-	    <div class="post-type-form-table">
-            <label for="slider_post_type">Select Post Type</label>
-            <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type" data_id="<?php echo $post_ID ?>">
-            <?php
-            $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
-            unset( $get_post_types['attachment'] );
-            unset( $get_post_types['page'] );
-            foreach ( $get_post_types as $get_post_type ) {
-                ?>
-                <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?> ><?php echo $get_post_type; ?></option>
-                <?php
-                }
-             ?>
-            </select>
-        </div><br>
-        <div class="postCategory-wrapper" id="postCategory-wrapper">
-
-       </div>
-
-       <script>
-            jQuery(function ($){
-                    $('#slider_post_type').on('change', showCategory)
-
-                    function showCategory(){
-
-                    let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
-                    let postType =  $('#slider_post_type').val();
-                    let post_id =  $('#slider_post_type').attr('data_id');
-
-                    var data = {
-                        'action': 'absp_slider_ajax',
-                        'post_type': postType,
-                        'post_id' : post_id,
-                    };
-
-                    $.post(ajax_url, data, function(response){
-                        $('#postCategory-wrapper').html(response);
-                    });
-                
-                }
-                showCategory();
-            });
-        </script>
-        
+?>
+<div class="post-type-form-table">
+    <label for="slider_post_type">Select Post Type</label>
+    <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type"
+        data_id="<?php echo $post_ID ?>">
         <?php
+                        $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
+                        unset( $get_post_types['attachment'] );
+                        unset( $get_post_types['page'] );
+                        foreach ( $get_post_types as $get_post_type ) {
+                            ?>
+        <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?>>
+            <?php echo $get_post_type; ?></option>
+        <?php
+                            }
+                        ?>
+    </select>
+</div><br>
+<div class="postCategory-wrapper" id="postCategory-wrapper">
+
+</div>
+
+<script>
+jQuery(function($) {
+    $('#slider_post_type').on('change', showCategory)
+
+    function showCategory() {
+
+        let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
+        let postType = $('#slider_post_type').val();
+        let post_id = $('#slider_post_type').attr('data_id');
+
+        var data = {
+            'action': 'absp_slider_ajax',
+            'post_type': postType,
+            'post_id': post_id,
+        };
+
+        $.post(ajax_url, data, function(response) {
+            $('#postCategory-wrapper').html(response);
+        });
+
+    }
+    showCategory();
+});
+</script>
+
+<?php
     }
 
     public function render_metabox_settings( $post ) {
@@ -125,61 +127,56 @@ class Absolute_Custom_Meta_Box {
 
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); ?>
 
-        <div class="searchHead">
-            <ul class="dtbl">
-                <li class="searchFilter"><input type="text" placeholder="Search in setting..." data-search></li>
-            </ul>
-        </div>
-        
-        <div class="swiperjsSection innerOptions">
-        
-            <ul class="nav-tab-side" data-update-hashbang="1">
-                <li class="active"><a href="#sjs-tab-parameters">Parameters</a></li>
-                <li><a href="#sjs-tab-autoplay">Autoplay</a></li>
-                <li><a href="#sjs-tab-pagination">Pagination</a></li>
-                <li><a href="#sjs-tab-navigation">Navigation</a></li>
-                <li><a href="#sjs-tab-carousel">Carousel</a></li>
-                <li><a href="#sjs-tab-breakpoints">Breakpoints</a></li>
-            </ul>
+<div class="searchHead">
+    <ul class="dtbl">
+        <li class="searchFilter"><input type="text" placeholder="Search in setting..." data-search></li>
+    </ul>
+</div>
 
-            <div class="rightSide">
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/parameters-meta.php' ); ?>
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/autoplay-meta.php' ); ?>
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/pagination-meta.php' ); ?>
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/navigation-meta.php' ); ?>
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/carousel-meta.php' ); ?>
-                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/breakpoints-meta.php' ); ?>
-            </div>
+<div class="absoluteSwiperSettingsSection">
 
-        </div>
+    <ul class="nav-tab-side" data-update-hashbang="1">
+        <li class="active"><a href="#sjs-tab-parameters">Parameters</a></li>
+        <li><a href="#sjs-tab-autoplay">Autoplay</a></li>
+        <li><a href="#sjs-tab-pagination">Pagination</a></li>
+        <li><a href="#sjs-tab-navigation">Navigation</a></li>
+        <li><a href="#sjs-tab-carousel">Carousel</a></li>
+        <li><a href="#sjs-tab-breakpoints">Breakpoints</a></li>
+    </ul>
 
-        <?php
+    <div class="rightSide">
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/parameters-meta.php' ); ?>
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/autoplay-meta.php' ); ?>
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/pagination-meta.php' ); ?>
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/navigation-meta.php' ); ?>
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/carousel-meta.php' ); ?>
+        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/breakpoints-meta.php' ); ?>
+    </div>
+
+</div>
+
+<?php
     }
 
     public function render_metabox_shortcode( $post ) {
         global $post;
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); ?>
-            
-            <div class="shortcodeWrap">
-                <h4>Copy & Paste For Post & Pages.</h4>
-                <input 
-                    type="text" 
-                    readonly="readonly" 
-                    value='[absolute_swiper id="<?php echo $post->ID ?>"]'
-                    class="large-text code">
-                <a href="#" class="copyData">Copy to clipboard</a>
-            </div>
 
-            <div class="shortcodeWrap">
-                <h4>For Custom Template Php Files.</h4>
-                <input 
-                    type="text" 
-                    readonly="readonly" 
-                    value='&lt;?php echo do_shortcode("[absolute_swiper id=<?php echo $post->ID ?>]"); ?&gt;'
-                    class="large-text code">
-                <a href="#" class="copyData">Copy to clipboard</a>
-            </div>
-        <?php
+<div class="shortcodeWrap">
+    <h4>Copy & Paste For Post & Pages.</h4>
+    <input type="text" readonly="readonly" value='[absolute_swiper id="<?php echo $post->ID ?>"]'
+        class="large-text code">
+    <a href="#" class="copyData">Copy to clipboard</a>
+</div>
+
+<div class="shortcodeWrap">
+    <h4>For Custom Template Php Files.</h4>
+    <input type="text" readonly="readonly"
+        value='&lt;?php echo do_shortcode("[absolute_swiper id=<?php echo $post->ID ?>]"); ?&gt;'
+        class="large-text code">
+    <a href="#" class="copyData">Copy to clipboard</a>
+</div>
+<?php
     }
  
     /*
@@ -210,17 +207,18 @@ class Absolute_Custom_Meta_Box {
             $all_categories = get_categories($args);
 
             ?>
-            <label for="slider_post_cat">Select Post Category</label>
-            <select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
-                <?php
+<label for="slider_post_cat">Select Post Category</label>
+<select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
+    <?php
                 foreach($all_categories as $category){
                     ?>
-                    <option value="<?php echo  $category->name ?>" <?php selected($post_category, $category->name) ?>  ><?php echo $category->name ?></option>
-                    <?php
+    <option value="<?php echo  $category->name ?>" <?php selected($post_category, $category->name) ?>>
+        <?php echo $category->name ?></option>
+    <?php
                 }
                 ?>
-            </select>
-        <?php
+</select>
+<?php
         }else{
 
             // Use get_post_meta to retrieve an existing value from the database.
@@ -228,47 +226,47 @@ class Absolute_Custom_Meta_Box {
 
             // Display the form, using the current value.
             ?>
-            <div class="gallery-form-table" >
-                <ul id="gallery-metabox-list">
-                    <?php if ($ids) { ?>
-                        <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
-                        <li>
-                            <input type="hidden" name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]" value="<?php echo $value; ?>">
-                            <img class="image-preview" src="<?php echo $image[0]; ?>">
-                            <div class="actionButtons">
-                                <a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">
-                                    <span class="dashicons dashicons-edit"></span>
-                                </a>
-                                <a class="remove-image button button-small" href="#">
-                                    <span class="dashicons dashicons-no-alt"></span>
-                                </a>
-                            </div>
-                        </li>
-                        <?php endforeach; ?>
-                    <?php } ?>
-                </ul>
-                <h4 class="noDataFound">No Images Selected.</h4>
-            </div>
-            
-            <div class="addfooter">
-                <a href="#" class="removeAll button button-secondary button-large">
-                    <span class="dashicons dashicons-trash"></span> 
-                    Empty Slider
+<div class="gallery-form-table">
+    <ul id="gallery-metabox-list">
+        <?php if ($ids) { ?>
+        <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
+        <li>
+            <input type="hidden" name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]"
+                value="<?php echo $value; ?>">
+            <img class="image-preview" src="<?php echo $image[0]; ?>">
+            <div class="actionButtons">
+                <a class="change-image button button-small" href="#" data-uploader-title="Change image"
+                    data-uploader-button-text="Change image">
+                    <span class="dashicons dashicons-edit"></span>
                 </a>
-                <a href="#" class="saveAll button button-primary button-large">
-                    <span class="dashicons dashicons-admin-tools"></span>
-                    Save
-                </a>
-                <a  class="gallery-add button button-primary button-large" 
-                    href="#" 
-                    data-uploader-title="Add image(s) to gallery" 
-                    data-uploader-button-text="Add image(s)">
-                        <span class="dashicons dashicons-plus-alt"></span> 
-                        Add Images
+                <a class="remove-image button button-small" href="#">
+                    <span class="dashicons dashicons-no-alt"></span>
                 </a>
             </div>
+        </li>
+        <?php endforeach; ?>
+        <?php } ?>
+    </ul>
+    <h4 class="noDataFound">No Images Selected.</h4>
+</div>
 
-        <?php
+<div class="addfooter">
+    <a href="#" class="removeAll button button-secondary button-large">
+        <span class="dashicons dashicons-trash"></span>
+        Empty Slider
+    </a>
+    <a href="#" class="saveAll button button-primary button-large">
+        <span class="dashicons dashicons-admin-tools"></span>
+        Save
+    </a>
+    <a class="gallery-add button button-primary button-large" href="#" data-uploader-title="Add image(s) to gallery"
+        data-uploader-button-text="Add image(s)">
+        <span class="dashicons dashicons-plus-alt"></span>
+        Add Images
+    </a>
+</div>
+
+<?php
         }
         die;
     }

@@ -23,13 +23,13 @@ function as_carousel_custom_column( $column, $post_id ){
 	
 	global $post;
 	$post_id = absint( $post_id );
-	$meta_prefix = '_s_s_m_';
+	$meta_prefix = '_absolute_swiper_';
 
     switch( $column ){
         case 'shortcode': ?>
-	        <input type="text" readonly="readonly" value='[absolute-swiper id="<?php echo $post->ID ?>"]' class="large-text code">
-			<a href="#" class="copyData">Copy to clipboard</a>
-		<?php
+<input type="text" readonly="readonly" value='[absolute-swiper id="<?php echo $post->ID ?>"]' class="large-text code">
+<a href="#" class="copyData">Copy to clipboard</a>
+<?php
 		break;
 		
 		case 'image':

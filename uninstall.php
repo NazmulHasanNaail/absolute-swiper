@@ -14,7 +14,7 @@ foreach( $swiper_slide as $slides ) {
 }
 
 foreach ( wp_load_alloptions() as $option => $value ) {
-    if ( strpos( $option, '_s_s_m_' ) === 0 ) {
+    if ( strpos( $option, '_absolute_swiper_' ) === 0 ) {
         delete_option( $option );
     }
 }
