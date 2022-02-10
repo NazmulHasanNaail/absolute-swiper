@@ -1,49 +1,54 @@
+(function() {
 
-var swiper_slider;
+var sliderSelector = '.swiper',
 
-(function($) {
-"use strict";
- 	
- 	$('[data-slider]').each(function(){
- 		var t 			= $(this),
-			config 		= {},
-			general		= t.data('general'),
-			autoplay	= t.data('autoplay'),
-			pagination 	= t.data('pagination'),
-			navigation 	= t.data('navigation'),
-			breakpoints	= t.data('breakpoints');
+defaultOptions = {
+  breakpointsInverse: true,
+  observer: true
+};
 
+var nSlider = document.querySelectorAll(sliderSelector);
+
+  [].forEach.call(nSlider, function( slider, index, arr ) {
+
+	    dataOptions	= {},
+		general		= slider.getAttribute('data-general'),
+		autoplay	= slider.getAttribute('data-autoplay'),
+		pagination 	= slider.getAttribute('data-pagination'),
+		navigation 	= slider.getAttribute('data-navigation'),
+		breakpoints	= slider.getAttribute('data-breakpoints');
+	
 		if(general){
-			config = general;
+			dataOptions.general = JSON.parse(general);
 		}
 
  		if(autoplay){
- 			config.autoplay = autoplay;
+			dataOptions.autoplay = JSON.parse(autoplay);
  		}
 		 
 		if(pagination){
-			config.pagination = pagination;
+			dataOptions.pagination = JSON.parse(pagination);
 		}
 
 		if(navigation){
-			config.navigation = navigation;
+			dataOptions.navigation = JSON.parse(navigation);
 		}
 
 		if(breakpoints){
-			config.breakpoints = breakpoints;
+			dataOptions.breakpoints = JSON.parse(breakpoints);
 		}
- 		
- 		//console.log(config);
-		swiper_slider = new Swiper(t, config);
-		
-		t.removeAttr('data-general'); 
-		t.removeAttr('data-autoplay'); 
-		t.removeAttr('data-pagination'); 
-		t.removeAttr('data-navigation'); 
-		t.removeAttr('data-breakpoints'); 
-	 });
-	 
-})(jQuery);
+
+		slider.options = Object.assign({}, defaultOptions, dataOptions);
+		const swiper = new Swiper(slider, slider.options);
+
+		slider.removeAttribute('data-general'), 
+		slider.removeAttribute('data-autoplay'),
+		slider.removeAttribute('data-pagination'),
+		slider.removeAttribute('data-navigation'),
+		slider.removeAttribute('data-breakpoints');
+  });
+
+})();
 
 
 

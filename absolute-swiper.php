@@ -45,9 +45,9 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 		}
 
 		function front_enqueue() {
-			wp_enqueue_style( 'swiper-css-library', plugins_url( '/public/css/library.css', __FILE__ ) );
+			wp_enqueue_style( 'swiper-css-library', plugins_url( '/public/css/swiper-bundle.min.css', __FILE__ ) );
 			wp_enqueue_style( 'swiper-css-main', plugins_url( '/public/css/main.css', __FILE__ ) );
-			wp_enqueue_script( 'swiper-js-library', plugins_url( '/public/js/library.js', __FILE__ ), array('jquery'), '4.5.0', true );
+			wp_enqueue_script( 'swiper-js-library', plugins_url( '/public/js/swiper-bundle.min.js', __FILE__ ), array('jquery'), '4.5.0', true );
 			wp_enqueue_script( 'swiper-js-main', plugins_url( '/public/js/main.js', __FILE__ ), array('jquery'), '1.0.0', true );
 		}
 
