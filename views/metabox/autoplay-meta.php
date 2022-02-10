@@ -13,7 +13,7 @@ $autoplay = array(
 
 ?>
 
-<div id="sjs-tab-autoplay" class="tabSec autoPlay">
+<div id="absolute-swiper-tab-autoplay" class="tabSec autoPlay">
     <table>
         <tbody>
             <tr data-filter-item data-filter-name="Autoplay autoplay autoplay Auto Play auto play">

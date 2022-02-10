@@ -17,7 +17,7 @@ $pagination = array(
 
 ?>
 
-<div id="sjs-tab-pagination" class="tabSec pagiNation">
+<div id="absolute-swiper-tab-pagination" class="tabSec pagiNation">
     <table>
         <tbody>
             <tr data-filter-item data-filter-name="pagination Pagination">

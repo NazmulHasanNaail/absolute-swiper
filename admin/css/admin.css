@@ -25,54 +25,54 @@
     font-size: 14px;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide table {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content table {
     width: 100%;
     border: 0;
     border-collapse: collapse;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide table tr:nth-child(even) td {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content table tr:nth-child(even) td {
     background: #ffffff;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide table td {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content table td {
     width: 20%;
     padding: 10px 15px;
     border-bottom: 1px solid #eeeeee;
     min-width: 130px;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide table td ul {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content table td ul {
     margin-bottom: 0;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide table td+td {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content table td+td {
     width: 80%;
     border-left: 1px solid #eeeeee;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide input[type="text"] {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content input[type="text"] {
     width: 100%;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide td>label {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content td>label {
     display: block;
     font-weight: 500;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide span {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content span {
     font-size: 12px;
     display: block;
     margin: 0 0 5px 0;
     color: #8c8c8c;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide td ul li {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content td ul li {
     display: inline-block;
     margin-right: 10px;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide td ul li input {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content td ul li input {
     margin-right: 5px;
 }
 
@@ -95,41 +95,37 @@
     background: transparent;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side {
-    width: 250px;
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab {
     margin: 0;
     background: #ffffff;
-    border-right: 1px solid #eeeeee;
-    display: table-cell;
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
     vertical-align: top;
     position: relative;
+    padding: 15px 0;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li {
     margin: 0;
-    border-bottom: 1px solid #eeeeee;
     outline: none;
+    margin-right: 5px;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li.active a,
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li:hover a {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li.active a,
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li:hover a {
     background: #eeeeee;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li.active,
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li:hover {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li.active,
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li:hover {
     border-color: #eeeeee;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li.active a:after {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li.active a:after {
     display: block;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li:first-child {
-    border-top: 0px;
-}
-
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li a {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li a {
     display: block;
     padding: 10px 15px;
     background: #ffffff;
@@ -140,15 +136,14 @@
     text-transform: capitalize;
     letter-spacing: 0px;
     font-weight: 500;
-    color: #1e70cd;
+    color: #3c434a;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .nav-tab-side li a:focus {
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .absoute-swiper-nav-tab li a:focus {
     box-shadow: none;
 }
 
-.post-type-absolute_swiper .absoluteSwiperSettingsSection .rightSide {
-    display: table-cell;
+.post-type-absolute_swiper .absoluteSwiperSettingsSection .tab-content {
     vertical-align: top;
     padding: 0;
 }
@@ -236,12 +231,10 @@
 
 .post-type-absolute_swiper .gallery-form-table .noDataFound {
     text-align: center;
-    display: none;
 }
 
 .post-type-absolute_swiper .addfooter .removeAll {
     float: left;
-    background-color: #c85959;
     background: rgba(170, 0, 0, 0.65);
     border: 0;
     color: #ffffff;
@@ -305,21 +298,10 @@
 .post-type-absolute_swiper #poststuff .stuffbox>h3,
 .post-type-absolute_swiper #poststuff h2,
 .post-type-absolute_swiper #poststuff h3.hndle {
-    background: #1e70cd;
-    color: #ffffff;
+    background: #eee;
+    color: #3c434a;
 }
 
-.post-type-absolute_swiper .accordion-section-title:after,
-.post-type-absolute_swiper .handlediv,
-.item-edit,
-.post-type-absolute_swiper .postbox .handlediv.button-link,
-.post-type-absolute_swiper .toggle-indicator {
-    color: #ffffff;
-}
-
-.post-type-absolute_swiper.wp-core-ui .button-primary {
-    background: #1e70cd;
-}
 
 .post-type-absolute_swiper .shortcode.column-shortcode .copyData {
     display: block;
@@ -356,13 +338,6 @@
     vertical-align: middle;
 }
 
-.post-type-absolute_swiper .searchHead {
-    position: relative;
-    padding: 10px;
-    border-bottom: 1px solid #eeeeee;
-    margin: 0;
-}
-
 .post-type-absolute_swiper .dtbl {
     display: table;
     width: 100%;
@@ -373,33 +348,12 @@
     display: table-cell;
 }
 
-.post-type-absolute_swiper .searchHead .searchFilter {
-    text-align: right;
-}
-
-.post-type-absolute_swiper .searchHead .searchFilter input {
-    padding: 5px 10px;
-    min-width: 300px;
-}
-
 .post-type-absolute_swiper .hidden {
     display: none;
 }
 
 .post-type-absolute_swiper .text-right {
     text-align: right;
-}
-
-.post-type-absolute_swiper.wp-core-ui .button.addShortCode {
-    background: #1e70cd;
-    color: #ffffff;
-    border: 0;
-    line-height: 27px;
-}
-
-.post-type-absolute_swiper.wp-core-ui .button.addShortCode img {
-    margin: -2px 2px 0 0;
-    padding: 0;
 }
 
 #absolute-swiper-js-slider-postType label {

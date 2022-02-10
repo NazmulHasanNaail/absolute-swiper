@@ -13,7 +13,7 @@ $breakpoints = array(
 
 ?>
 
-<div id="sjs-tab-breakpoints" class="tabSec breakpoints">
+<div id="absolute-swiper-tab-breakpoints" class="tabSec breakpoints">
     <h3>Responsive Breakpoints</h3>
     <table class="breakpointsSettings">
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 320">

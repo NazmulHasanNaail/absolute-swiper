@@ -15,7 +15,7 @@ $general = array(
 
 ?>
 
-<div id="sjs-tab-parameters" class="tabSec generalOptions">
+<div id="absolute-swiper-tab-parameters" class="tabSec generalOptions">
     <table class="autoPlaySettings">
         <tr data-filter-item data-filter-name="initialSlide InitialSlide initialslide initial Initial slide Slide">
             <td>

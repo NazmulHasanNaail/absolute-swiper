@@ -11,7 +11,7 @@ $navigation = array(
 );
 
 ?>
-<div id="sjs-tab-navigation" class="tabSec navigation">
+<div id="absolute-swiper-tab-navigation" class="tabSec navigation">
     <table>
         <tbody>
             <tr data-filter-item data-filter-name="Navigation navigation">

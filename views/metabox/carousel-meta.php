@@ -1,4 +1,4 @@
-<div id="sjs-tab-carousel" class="tabSec carousel">
+<div id="absolute-swiper-tab-carousel" class="tabSec carousel">
     <table class="carouselSettings">
         <tr data-filter-item data-filter-name="slidesPerView SlidesPerView slidesperview Slides slides per Per view View">
             <td>

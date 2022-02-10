@@ -127,24 +127,18 @@ jQuery(function($) {
 
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); ?>
 
-<div class="searchHead">
-    <ul class="dtbl">
-        <li class="searchFilter"><input type="text" placeholder="Search in setting..." data-search></li>
-    </ul>
-</div>
-
 <div class="absoluteSwiperSettingsSection">
 
-    <ul class="nav-tab-side" data-update-hashbang="1">
-        <li class="active"><a href="#sjs-tab-parameters">Parameters</a></li>
-        <li><a href="#sjs-tab-autoplay">Autoplay</a></li>
-        <li><a href="#sjs-tab-pagination">Pagination</a></li>
-        <li><a href="#sjs-tab-navigation">Navigation</a></li>
-        <li><a href="#sjs-tab-carousel">Carousel</a></li>
-        <li><a href="#sjs-tab-breakpoints">Breakpoints</a></li>
+    <ul class="absoute-swiper-nav-tab" data-update-hashbang="1">
+        <li class="active"><a href="#absolute-swiper-tab-parameters">Parameters</a></li>
+        <li><a href="#absolute-swiper-tab-autoplay">Autoplay</a></li>
+        <li><a href="#absolute-swiper-tab-pagination">Pagination</a></li>
+        <li><a href="#absolute-swiper-tab-navigation">Navigation</a></li>
+        <li><a href="#absolute-swiper-tab-carousel">Carousel</a></li>
+        <li><a href="#absolute-swiper-tab-breakpoints">Breakpoints</a></li>
     </ul>
 
-    <div class="rightSide">
+    <div class="tab-content">
         <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/parameters-meta.php' ); ?>
         <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/autoplay-meta.php' ); ?>
         <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/pagination-meta.php' ); ?>
