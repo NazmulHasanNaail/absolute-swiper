@@ -106,7 +106,7 @@ jQuery(function($) {
 
     function resetIndex() {
         $('#gallery-metabox-list li').each(function(i) {
-            $(this).find('input:hidden').attr('name', '_s_s_m_gallery_id[' + i + ']');
+            $(this).find('input:hidden').attr('name', '_absolute_swiper_slider_post[gallery][' + i + ']');
         });
     }
 
@@ -120,7 +120,6 @@ jQuery(function($) {
     }
 
     function checkData(){
-        //console.log($('#gallery-metabox-list li').length);
         if($('#gallery-metabox-list li').length > 0){
             $('.noDataFound').slideUp();
         }else{
