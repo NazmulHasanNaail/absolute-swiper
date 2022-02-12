@@ -1,11 +1,7 @@
 (function() {
 
-var sliderSelector = '.swiper',
+var sliderSelector = '.swiper';
 
-defaultOptions = {
-  breakpointsInverse: true,
-  observer: true
-};
 
 var nSlider = document.querySelectorAll(sliderSelector);
 
@@ -19,7 +15,7 @@ var nSlider = document.querySelectorAll(sliderSelector);
 		breakpoints	= slider.getAttribute('data-breakpoints');
 	
 		if(general){
-			dataOptions.general = JSON.parse(general);
+			dataOptions= JSON.parse(general);
 		}
 
  		if(autoplay){
@@ -38,8 +34,9 @@ var nSlider = document.querySelectorAll(sliderSelector);
 			dataOptions.breakpoints = JSON.parse(breakpoints);
 		}
 
-		slider.options = Object.assign({}, defaultOptions, dataOptions);
-		const swiper = new Swiper(slider, slider.options);
+		slider.options = Object.assign({},  dataOptions);
+		
+		const AbsoluteSwiper = new Swiper(slider, slider.options);
 
 		slider.removeAttribute('data-general'), 
 		slider.removeAttribute('data-autoplay'),

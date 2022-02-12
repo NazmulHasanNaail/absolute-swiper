@@ -154,7 +154,7 @@ function absolute_swiper_shortcode($atts) {
 
         ?>
 
-        <div class="swiper" data-slider='swiperSlider<?php echo $atts['id']; ?>'
+        <div class="swiper" data-slider='AbsoluteSwiper<?php echo $atts['id']; ?>'
             data-general='<?php echo json_encode($gene, JSON_NUMERIC_CHECK); ?>'
             data-autoplay='<?php echo json_encode($auto, JSON_NUMERIC_CHECK); ?>'
             data-pagination='<?php echo json_encode($pagi, JSON_NUMERIC_CHECK); ?>'

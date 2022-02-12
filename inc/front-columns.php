@@ -2,11 +2,11 @@
 
 $post_type = "absolute_swiper";
 
-add_filter( 'manage_'. $post_type .'_posts_columns', 'as_set_carousel_columns' );
-add_action( 'manage_'. $post_type .'_posts_custom_column', 'as_carousel_custom_column', 10, 2 );
+add_filter( 'manage_'. $post_type .'_posts_columns', 'absolute_swiper_admin_columns' );
+add_action( 'manage_'. $post_type .'_posts_custom_column', 'absolute_swiper_admin_custom_column', 10, 2 );
 
 // Set Custom Columns
-function as_set_carousel_columns( $columns){
+function absolute_swiper_admin_columns( $columns){
 	$addColumns = array();
 	$addColumns['cb'] = '<input type="checkbox" />';
 	$addColumns['title'] = 'Sliders';
@@ -17,7 +17,7 @@ function as_set_carousel_columns( $columns){
 }
 
 //  Create Custom Columns
-function as_carousel_custom_column( $column, $post_id ){
+function absolute_swiper_admin_custom_column( $column, $post_id ){
 	
 	global $post;
 	$post_id = absint( $post_id );
