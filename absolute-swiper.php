@@ -1,17 +1,15 @@
 <?php
 /**
  * Plugin Name:      	Absolute Swiper
- * Plugin URI:        	
- * Description:       	This is Absolue Swiper slider plugin
- * Version:           	1.0.1
+ * Plugin URI:        	https://github.com/NazmulHasanNaail/absolute-swiper
+ * Description:       	Absolue Swiper Slider, Most Modern And Easy To Use Slider for WordPress.
+ * Version:           	1.0.0
  * Requires at least: 	5.3
  * Requires PHP:      	7.3
  * Author:            	Nazmul hasan
- * Author URI:         	
  * Text Domain:       	absolute-swiper
- * License:           	GPLv2 or later
- * License URI:       	
- * GitHub Plugin URI: 	
+ * License:           	GPLv2 or later	
+ * GitHub Plugin URI: 	https://github.com/NazmulHasanNaail/absolute-swiper
  */
 /*
 
