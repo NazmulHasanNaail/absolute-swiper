@@ -112,6 +112,7 @@ $general = array(
                     <option value="cube" <?php selected($general['effect'], 'cube') ?>>cube</option>
                     <option value="coverflow" <?php selected($general['effect'], 'coverflow') ?>>coverflow</option>
                     <option value="flip" <?php selected($general['effect'], 'flip') ?>>flip</option>
+                    <option value="cards" <?php selected($general['effect'], 'cards') ?>>cards</option>
                 </select>
             </td>
         </tr>

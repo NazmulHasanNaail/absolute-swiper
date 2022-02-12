@@ -35,7 +35,6 @@ var nSlider = document.querySelectorAll(sliderSelector);
 		}
 
 		slider.options = Object.assign({},  dataOptions);
-		
 		const AbsoluteSwiper = new Swiper(slider, slider.options);
 
 		slider.removeAttribute('data-general'), 
