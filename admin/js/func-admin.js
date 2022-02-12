@@ -181,7 +181,6 @@ jQuery(function($) {
     });
 
     $(".addShortCode").on('click', function(e) {
-        //send_to_editor(jQuery("#sc_select :selected").val());
         e.preventDefault();
     });
 

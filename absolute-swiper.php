@@ -28,30 +28,32 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 		function __construct() {
 			$this->plugin = plugin_basename( __FILE__ );
 
-			include_once( plugin_dir_path( __FILE__ ) . 'views/meta-box-options.php' );
-			include_once( plugin_dir_path( __FILE__ ) . 'views/front-columns.php' );
+			include_once( plugin_dir_path( __FILE__ ) . 'inc/meta-box-options.php' );
 			include_once( plugin_dir_path( __FILE__ ) . 'shortcode/slide-js-shortcode.php' );
+			include_once( plugin_dir_path( __FILE__ ) . 'inc/front-columns.php' );
+			$this->absolute_register();
 		}
 
-		function register() {
-			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue' ) );
-			add_action( 'init', array( $this, 'custom_post_type' ) );
+		function absolute_register() {
+			add_action( 'admin_enqueue_scripts', array( $this, 'absolute_admin_enqueue' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'absolute_front_enqueue' ) );
+			add_action( 'init', array( $this, 'absolute_custom_post_type' ) );
 		}
-		function admin_enqueue() {
+
+		function absolute_admin_enqueue() {
 			wp_enqueue_media();
-			wp_enqueue_style( 'admincss', plugins_url( '/admin/css/admin.css', __FILE__ ) );
-			wp_enqueue_script( 'adminjs', plugins_url( '/admin/js/func-admin.js', __FILE__ ), array('jquery'), '1.0.0', true );
+			wp_enqueue_style( 'absolute-admin-css', plugins_url( '/admin/css/admin.css', __FILE__ ) );
+			wp_enqueue_script( 'absolute-admin-js', plugins_url( '/admin/js/func-admin.js', __FILE__ ), array('jquery'), '1.0.0', true );
 		}
 
-		function front_enqueue() {
-			wp_enqueue_style( 'swiper-css-library', plugins_url( '/public/css/swiper-bundle.min.css', __FILE__ ) );
-			wp_enqueue_style( 'swiper-css-main', plugins_url( '/public/css/main.css', __FILE__ ) );
-			wp_enqueue_script( 'swiper-js-library', plugins_url( '/public/js/swiper-bundle.min.js', __FILE__ ), array('jquery'), '4.5.0', true );
-			wp_enqueue_script( 'swiper-js-main', plugins_url( '/public/js/main.js', __FILE__ ), array('jquery'), '1.0.0', true );
+		function absolute_front_enqueue() {
+			wp_enqueue_style( 'absolute-swiper-bundle-css', plugins_url( '/public/css/swiper-bundle.min.css', __FILE__ ) );
+			wp_enqueue_style( 'absolute-swiper-main-css', plugins_url( '/public/css/main.css', __FILE__ ) );
+			wp_enqueue_script( 'absolute-swiper-bundle-js', plugins_url( '/public/js/swiper-bundle.min.js', __FILE__ ), array('jquery'), '8.0.4', true );
+			wp_enqueue_script( 'absolute-swiper-main-js', plugins_url( '/public/js/main.js', __FILE__ ), array('jquery'), '1.0.0', true );
 		}
 
-		function custom_post_type() {
+		function absolute_custom_post_type() {
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/post-types.php' );
 		}
 
@@ -66,7 +68,6 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 }
 
 $Absolute_Swiper = new Absolute_Swiper();
-$Absolute_Swiper->register();
 
 register_activation_hook( __FILE__, array( $Absolute_Swiper, 'activate' ) );
 register_deactivation_hook( __FILE__, array( $Absolute_Swiper, 'deactivate' ));

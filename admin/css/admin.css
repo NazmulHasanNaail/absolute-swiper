@@ -231,6 +231,7 @@
 
 .post-type-absolute_swiper .gallery-form-table .noDataFound {
     text-align: center;
+    display: none;
 }
 
 .post-type-absolute_swiper .addfooter .removeAll {
