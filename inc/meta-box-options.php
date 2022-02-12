@@ -72,26 +72,27 @@ class Absolute_Custom_Meta_Box {
         
         
 ?>
+<br>
 <div class="post-type-form-table">
     <label for="slider_post_type">Select Post Type</label>
     <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type"
         data_id="<?php echo $post_ID ?>">
         <?php
-                        $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
-                        unset( $get_post_types['attachment'] );
-                        unset( $get_post_types['page'] );
-                        foreach ( $get_post_types as $get_post_type ) {
-                            ?>
+            $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
+            unset( $get_post_types['attachment'] );
+            unset( $get_post_types['page'] );
+            foreach ( $get_post_types as $get_post_type ) {
+                ?>
         <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?>>
             <?php echo $get_post_type; ?></option>
         <?php
-                            }
-                        ?>
+            }
+        ?>
     </select>
 </div><br>
 <div class="postCategory-wrapper" id="postCategory-wrapper">
 
-</div>
+</div><br>
 
 <script>
 jQuery(function($) {

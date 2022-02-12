@@ -29,7 +29,7 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 			$this->plugin = plugin_basename( __FILE__ );
 
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/meta-box-options.php' );
-			include_once( plugin_dir_path( __FILE__ ) . 'shortcode/slide-js-shortcode.php' );
+			include_once( plugin_dir_path( __FILE__ ) . 'shortcode/absolute-swiper-shortcode.php' );
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/front-columns.php' );
 			$this->absolute_swiper_register();
 		}
