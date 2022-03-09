@@ -71,55 +71,55 @@ class Absolute_Custom_Meta_Box {
         $post_ID = $post->ID;
         
         
-?>
-<br>
-<div class="post-type-form-table">
-    <label for="slider_post_type">Select Post Type</label>
-    <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type"
-        data_id="<?php echo $post_ID ?>">
-        <?php
-            $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
-            unset( $get_post_types['attachment'] );
-            unset( $get_post_types['page'] );
-            foreach ( $get_post_types as $get_post_type ) {
-                ?>
-        <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?>>
-            <?php echo $get_post_type; ?></option>
-        <?php
-            }
         ?>
-    </select>
-</div><br>
-<div class="postCategory-wrapper" id="postCategory-wrapper">
+        <br>
+        <div class="post-type-form-table">
+            <label for="slider_post_type">Select Post Type</label>
+            <select name="<?php echo $this->meta_prefix; ?>slider_post[type]" id="slider_post_type"
+                data_id="<?php echo $post_ID ?>">
+                <?php
+                    $get_post_types = get_post_types(array('public' => true), 'names', 'and'); 
+                    unset( $get_post_types['attachment'] );
+                    unset( $get_post_types['page'] );
+                    foreach ( $get_post_types as $get_post_type ) {
+                        ?>
+                <option value="<?php echo $get_post_type; ?>" <?php selected($post_type, $get_post_type) ?>>
+                    <?php echo $get_post_type; ?></option>
+                <?php
+                    }
+                ?>
+            </select>
+        </div><br>
+        <div class="postCategory-wrapper" id="postCategory-wrapper">
 
-</div><br>
+        </div><br>
 
-<script>
-jQuery(function($) {
-    $('#slider_post_type').on('change', showCategory)
+        <script>
+        jQuery(function($) {
+            $('#slider_post_type').on('change', showCategory)
 
-    function showCategory() {
+            function showCategory() {
 
-        let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
-        let postType = $('#slider_post_type').val();
-        let post_id = $('#slider_post_type').attr('data_id');
+                let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
+                let postType = $('#slider_post_type').val();
+                let post_id = $('#slider_post_type').attr('data_id');
 
-        var data = {
-            'action': 'absp_slider_ajax',
-            'post_type': postType,
-            'post_id': post_id,
-        };
+                var data = {
+                    'action': 'absp_slider_ajax',
+                    'post_type': postType,
+                    'post_id': post_id,
+                };
 
-        $.post(ajax_url, data, function(response) {
-            $('#postCategory-wrapper').html(response);
+                $.post(ajax_url, data, function(response) {
+                    $('#postCategory-wrapper').html(response);
+                });
+
+            }
+            showCategory();
         });
+        </script>
 
-    }
-    showCategory();
-});
-</script>
-
-<?php
+        <?php
     }
 
     public function render_metabox_settings( $post ) {
@@ -128,50 +128,50 @@ jQuery(function($) {
 
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); ?>
 
-<div class="absoluteSwiperSettingsSection">
+        <div class="absoluteSwiperSettingsSection">
 
-    <ul class="absoute-swiper-nav-tab" data-update-hashbang="1">
-        <li class="active"><a href="#absolute-swiper-tab-parameters">Parameters</a></li>
-        <li><a href="#absolute-swiper-tab-autoplay">Autoplay</a></li>
-        <li><a href="#absolute-swiper-tab-pagination">Pagination</a></li>
-        <li><a href="#absolute-swiper-tab-navigation">Navigation</a></li>
-        <li><a href="#absolute-swiper-tab-carousel">Carousel</a></li>
-        <li><a href="#absolute-swiper-tab-breakpoints">Breakpoints</a></li>
-    </ul>
+            <ul class="absoute-swiper-nav-tab" data-update-hashbang="1">
+                <li class="active"><a href="#absolute-swiper-tab-parameters">Parameters</a></li>
+                <li><a href="#absolute-swiper-tab-autoplay">Autoplay</a></li>
+                <li><a href="#absolute-swiper-tab-pagination">Pagination</a></li>
+                <li><a href="#absolute-swiper-tab-navigation">Navigation</a></li>
+                <li><a href="#absolute-swiper-tab-carousel">Carousel</a></li>
+                <li><a href="#absolute-swiper-tab-breakpoints">Breakpoints</a></li>
+            </ul>
 
-    <div class="tab-content">
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/parameters-meta.php' ); ?>
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/autoplay-meta.php' ); ?>
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/pagination-meta.php' ); ?>
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/navigation-meta.php' ); ?>
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/carousel-meta.php' ); ?>
-        <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/breakpoints-meta.php' ); ?>
-    </div>
+            <div class="tab-content">
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/parameters-meta.php' ); ?>
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/autoplay-meta.php' ); ?>
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/pagination-meta.php' ); ?>
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/navigation-meta.php' ); ?>
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/carousel-meta.php' ); ?>
+                <?php include_once( plugin_dir_path( __FILE__ ) . '/metabox/breakpoints-meta.php' ); ?>
+            </div>
 
-</div>
+        </div>
 
-<?php
+        <?php
     }
 
     public function render_metabox_shortcode( $post ) {
         global $post;
         wp_nonce_field( $this->meta_prefix.'nonce_action', $this->meta_prefix.'nonce' ); ?>
 
-<div class="shortcodeWrap">
-    <h4>Copy & Paste For Post & Pages.</h4>
-    <input type="text" readonly="readonly" value='[absolute_swiper id="<?php echo $post->ID ?>"]'
-        class="large-text code">
-    <a href="#" class="copyData">Copy to clipboard</a>
-</div>
+        <div class="shortcodeWrap">
+            <h4>Copy & Paste For Post & Pages.</h4>
+            <input type="text" readonly="readonly" value='[absolute_swiper id="<?php echo $post->ID ?>"]'
+                class="large-text code">
+            <a href="#" class="copyData">Copy to clipboard</a>
+        </div>
 
-<div class="shortcodeWrap">
-    <h4>For Custom Template Php Files.</h4>
-    <input type="text" readonly="readonly"
-        value='&lt;?php echo do_shortcode("[absolute_swiper id=<?php echo $post->ID ?>]"); ?&gt;'
-        class="large-text code">
-    <a href="#" class="copyData">Copy to clipboard</a>
-</div>
-<?php
+        <div class="shortcodeWrap">
+            <h4>For Custom Template Php Files.</h4>
+            <input type="text" readonly="readonly"
+                value='&lt;?php echo do_shortcode("[absolute_swiper id=<?php echo $post->ID ?>]"); ?&gt;'
+                class="large-text code">
+            <a href="#" class="copyData">Copy to clipboard</a>
+        </div>
+        <?php
     }
  
     /*
@@ -179,8 +179,9 @@ jQuery(function($) {
      */
     public function wp_ajax_absp_slider_ajax_handler_fn( ){
 
-        $post_type = $_REQUEST['post_type'];
-        $post_ID = $_REQUEST['post_id'];
+        $post_type = esc_html( $_REQUEST['post_type'], 'absolute-swiper' );
+        $post_ID = esc_html( $_REQUEST['post_id'], 'absolute-swiper');
+        
         $slider_post    = get_post_meta($post_ID, $this->meta_prefix."slider_post", true);
 
         if( $post_type !== 'absolute_swiper' ){
@@ -202,18 +203,18 @@ jQuery(function($) {
             $all_categories = get_categories($args);
 
             ?>
-<label for="slider_post_cat">Select Post Category</label>
-<select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
-    <?php
+            <label for="slider_post_cat">Select Post Category</label>
+            <select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
+                <?php
                 foreach($all_categories as $category){
                     ?>
-    <option value="<?php echo  $category->name ?>" <?php selected($post_category, $category->name) ?>>
-        <?php echo $category->name ?></option>
-    <?php
+                <option value="<?php echo  $category->name ?>" <?php selected($post_category, $category->name) ?>>
+                    <?php echo $category->name ?></option>
+                <?php
                 }
                 ?>
-</select>
-<?php
+            </select>
+            <?php
         }else{
 
             // Use get_post_meta to retrieve an existing value from the database.
@@ -221,47 +222,46 @@ jQuery(function($) {
 
             // Display the form, using the current value.
             ?>
-<div class="gallery-form-table">
-    <ul id="gallery-metabox-list">
-        <?php if ($ids) { ?>
-        <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
-        <li>
-            <input type="hidden" name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]"
-                value="<?php echo $value; ?>">
-            <img class="image-preview" src="<?php echo $image[0]; ?>">
-            <div class="actionButtons">
-                <a class="change-image button button-small" href="#" data-uploader-title="Change image"
-                    data-uploader-button-text="Change image">
-                    <span class="dashicons dashicons-edit"></span>
+            <div class="gallery-form-table">
+                <ul id="gallery-metabox-list">
+                    <?php if ($ids) { ?>
+                    <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
+                    <li>
+                        <input type="hidden" name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]"
+                            value="<?php echo $value; ?>">
+                        <img class="image-preview" src="<?php echo $image[0]; ?>">
+                        <div class="actionButtons">
+                            <a class="change-image button button-small" href="#" data-uploader-title="Change image"
+                                data-uploader-button-text="Change image">
+                                <span class="dashicons dashicons-edit"></span>
+                            </a>
+                            <a class="remove-image button button-small" href="#">
+                                <span class="dashicons dashicons-no-alt"></span>
+                            </a>
+                        </div>
+                    </li>
+                    <?php endforeach; ?>
+                    <?php } ?>
+                </ul>
+                <h4 class="noDataFound">No Images Selected.</h4>
+            </div>
+
+            <div class="addfooter">
+                <a href="#" class="removeAll button button-secondary button-large">
+                    <span class="dashicons dashicons-trash"></span>
+                    Empty Slider
                 </a>
-                <a class="remove-image button button-small" href="#">
-                    <span class="dashicons dashicons-no-alt"></span>
+                <a href="#" class="saveAll button button-primary button-large">
+                    <span class="dashicons dashicons-admin-tools"></span>
+                    Save
+                </a>
+                <a class="gallery-add button button-primary button-large" href="#" data-uploader-title="Add image(s) to gallery"
+                    data-uploader-button-text="Add image(s)">
+                    <span class="dashicons dashicons-plus-alt"></span>
+                    Add Images
                 </a>
             </div>
-        </li>
-        <?php endforeach; ?>
-        <?php } ?>
-    </ul>
-    <h4 class="noDataFound">No Images Selected.</h4>
-</div>
-
-<div class="addfooter">
-    <a href="#" class="removeAll button button-secondary button-large">
-        <span class="dashicons dashicons-trash"></span>
-        Empty Slider
-    </a>
-    <a href="#" class="saveAll button button-primary button-large">
-        <span class="dashicons dashicons-admin-tools"></span>
-        Save
-    </a>
-    <a class="gallery-add button button-primary button-large" href="#" data-uploader-title="Add image(s) to gallery"
-        data-uploader-button-text="Add image(s)">
-        <span class="dashicons dashicons-plus-alt"></span>
-        Add Images
-    </a>
-</div>
-
-<?php
+        <?php
         }
         die;
     }
@@ -340,8 +340,8 @@ jQuery(function($) {
 
     function as_updatePostMeta($id, $prefix, $name){
         if(isset($_POST[$prefix.$name])) {
-			$allData = $_POST[$prefix.$name];
-            update_post_meta($id, $prefix.$name, $this->as_sanitize_text_or_array_field($allData));
+			$allData = $this->as_sanitize_text_or_array_field($_POST[$prefix.$name]);
+            update_post_meta($id, $prefix.$name, $allData);
         } else {
             delete_post_meta($id, $prefix.$name);
         }   

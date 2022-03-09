@@ -25,7 +25,7 @@ function absolute_swiper_admin_custom_column( $column, $post_id ){
 
     if( $column == 'shortcode' ){
 	?>
-		<input type="text" readonly="readonly" value='[absolute-swiper id="<?php echo $post->ID ?>"]' class="large-text code">
+		<input type="text" readonly="readonly" value='[absolute-swiper id="<?php echo esc_attr($post->ID, 'absolute-swiper') ?>"]' class="large-text code">
 		<a href="#" class="copyData">Copy to clipboard</a>
 	<?php
     }

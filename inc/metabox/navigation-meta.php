@@ -24,7 +24,7 @@ $navigation = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_navigation[navigation]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[navigation]', 'absolute-swiper' ); ?>" 
                                     value="true" 
                                     <?php checked( $navigation['navigation'], 'true' ); ?>> True
                             </label>
@@ -33,7 +33,7 @@ $navigation = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_navigation[navigation]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[navigation]', 'absolute-swiper' ); ?>" 
                                     value="false" 
                                     <?php checked( $navigation['navigation'], 'false' ); ?>> False
                             </label>
@@ -54,9 +54,9 @@ $navigation = array(
                     <span>String with CSS selector or HTML element of the element that will work like "next" button after click on it</span>
                     <input 
                             id="nextEl"
-                            name="<?php echo $this->meta_prefix.'setting_navigation[nextEl]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[nextEl]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $navigation['nextEl']; ?>">
+                            value="<?php echo esc_attr( $navigation['nextEl'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="prevEl PrevEl prevel prev Prev el El Arrow arrow">
@@ -67,9 +67,9 @@ $navigation = array(
                     <span>String with CSS selector or HTML element of the element that will work like "prev" button after click on it</span>
                     <input 
                             id="prevEl"
-                            name="<?php echo $this->meta_prefix.'setting_navigation[prevEl]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[prevEl]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $navigation['prevEl']; ?>">
+                            value="<?php echo esc_attr( $navigation['prevEl'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="disabledClass DisabledClass disabledclass disabled Disabled Class class">
@@ -80,9 +80,9 @@ $navigation = array(
                     <span>CSS class name added to navigation button when it becomes disabled</span>
                     <input 
                             id="disabledClass"
-                            name="<?php echo $this->meta_prefix.'setting_navigation[disabledClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[disabledClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $navigation['disabledClass']; ?>">
+                            value="<?php echo esc_attr( $navigation['disabledClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="hiddenClass HiddenClass hiddenclass hidden Hidden class Class">
@@ -93,9 +93,9 @@ $navigation = array(
                     <span>CSS class name added to navigation button when it becomes hidden</span>
                     <input 
                             id="hiddenClass"
-                            name="<?php echo $this->meta_prefix.'setting_navigation[hiddenClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[hiddenClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $navigation['hiddenClass']; ?>">
+                            value="<?php echo esc_attr( $navigation['hiddenClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
         </table>

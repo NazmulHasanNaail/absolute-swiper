@@ -30,7 +30,7 @@ $pagination = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_pagination[pagination]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[pagination]', 'absolute-swiper' ); ?>" 
                                     value="true" 
                                     <?php checked( $pagination['pagination'], 'true' ); ?>> True
                             </label>
@@ -39,7 +39,7 @@ $pagination = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_pagination[pagination]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[pagination]', 'absolute-swiper' ); ?>" 
                                     value="false" 
                                     <?php checked( $pagination['pagination'], 'false' ); ?>> False
                             </label>
@@ -60,9 +60,9 @@ $pagination = array(
                     <span>Class Name for Pagination.</span>
                     <input 
                             id="el"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[el]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[el]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['el']; ?>">
+                            value="<?php echo esc_attr( $pagination['el'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="type Type">
@@ -71,7 +71,7 @@ $pagination = array(
                 </td>
                 <td>
                     <span>String with type of pagination.</span>
-                    <select name="<?php echo $this->meta_prefix.'setting_pagination[type]'; ?>">
+                    <select name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[type]', 'absolute-swiper' ); ?>">
                         <option value="bullets" <?php selected($pagination['type'], 'bullets') ?>>bullets</option>
                         <option value="fraction" <?php selected($pagination['type'], 'fraction') ?>>fraction</option>
                         <option value="progressbar" <?php selected($pagination['type'], 'progressbar') ?>>progressbar</option>
@@ -86,9 +86,9 @@ $pagination = array(
                     <span>Defines which HTML tag will be use to represent single pagination bullet. Only for bullets pagination type.</span>
                     <input 
                             id="bulletEle"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[bulletElement]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[bulletElement]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['bulletElement']; ?>">
+                            value="<?php echo esc_attr( $pagination['bulletElement'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="clickable ClickAble click able Click Able">
@@ -101,7 +101,7 @@ $pagination = array(
                         <li>
                             <label>
                                 <input 
-                                    name="<?php echo $this->meta_prefix.'setting_pagination[clickable]'; ?>"
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[clickable]', 'absolute-swiper' ); ?>"
                                     type="radio" 
                                     <?php checked( $pagination['clickable'], 'true' ); ?>
                                     value="true">True
@@ -110,7 +110,7 @@ $pagination = array(
                         <li>
                             <label>
                                 <input 
-                                    name="<?php echo $this->meta_prefix.'setting_pagination[clickable]'; ?>"
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[clickable]', 'absolute-swiper' ); ?>"
                                     type="radio" 
                                     <?php checked( $pagination['clickable'], 'false' ); ?>
                                     value="false">False
@@ -127,9 +127,9 @@ $pagination = array(
                     <span>CSS class name of single pagination bullet</span>
                     <input 
                             id="bulletClass"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[bulletClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[bulletClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['bulletClass']; ?>">
+                            value="<?php echo esc_attr( $pagination['bulletClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="currentClass current class currentclass CurrentClass Current Class">
@@ -140,9 +140,9 @@ $pagination = array(
                     <span>CSS class name of the element with currently active index in "fraction" pagination</span>
                     <input 
                             id="currentClass"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[currentClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[currentClass]','absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['currentClass']; ?>">
+                            value="<?php echo esc_attr( $pagination['currentClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="bulletActiveClass bullet active class bulletactiveclass Class Active Bullet">
@@ -153,9 +153,9 @@ $pagination = array(
                     <span>CSS class name of currently active pagination bullet</span>
                     <input 
                             id="bulletActiveClass"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[bulletActiveClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[bulletActiveClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['bulletActiveClass']; ?>">
+                            value="<?php echo esc_attr( $pagination['bulletActiveClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="clickableClass clickableclass click class Click Class able Able">
@@ -166,9 +166,9 @@ $pagination = array(
                     <span>CSS class name set to pagination when it is clickable</span>
                     <input 
                             id="clickableClass"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[clickableClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[clickableClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['clickableClass']; ?>">
+                            value="<?php echo esc_attr( $pagination['clickableClass'], ' absolute-swiper' ); ?>">
                 </td>
             </tr>
             <tr data-filter-item data-filter-name="lockClass lockclass LockClass lock class Lock Class">
@@ -179,9 +179,9 @@ $pagination = array(
                     <span>CSS class name set to pagination when it is disabled</span>
                     <input 
                             id="lockClass"
-                            name="<?php echo $this->meta_prefix.'setting_pagination[lockClass]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_pagination[lockClass]', 'absolute-swiper' ); ?>"
                             type="text" 
-                            value="<?php echo $pagination['lockClass']; ?>">
+                            value="<?php echo esc_attr( $pagination['lockClass'], 'absolute-swiper' ); ?>">
                 </td>
             </tr>
         </table>

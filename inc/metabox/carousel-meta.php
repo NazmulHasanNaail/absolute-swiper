@@ -8,11 +8,11 @@
                 <span>Number of slides per view.</span>
                 <input 
                     id="slidesPerView"
-                    name="<?php echo $this->meta_prefix.'setting_general[slidesPerView]'; ?>"
+                    name="<?php echo esc_attr( $this->meta_prefix.'setting_general[slidesPerView]', 'absolute-swiper' ); ?>"
                     type="number" 
                     min="1"
                     max="99"
-                    value="<?php echo $general['slidesPerView']; ?>">
+                    value="<?php echo esc_attr( $general['slidesPerView'], 'absolute-swiper' ); ?>">
             </td>
         </tr>
         <tr data-filter-item data-filter-name="slidesPerColumn SlidesPerColumn slidespercolumn slides Slides per Per column Column">
@@ -23,10 +23,10 @@
                 <span>Number of slides per column, for multirow layout.</span>
                 <input 
                     id="slidesPerColumn"
-                    name="<?php echo $this->meta_prefix.'setting_general[slidesPerColumn]'; ?>"
+                    name="<?php echo esc_attr( $this->meta_prefix.'setting_general[slidesPerColumn]', 'absolute-swiper' ); ?>"
                     type="number" 
                     min="1"
-                    value="<?php echo $general['slidesPerColumn']; ?>">
+                    value="<?php echo esc_attr( $general['slidesPerColumn'], 'absolute-swiper' ); ?>">
             </td>
         </tr>
     </table>

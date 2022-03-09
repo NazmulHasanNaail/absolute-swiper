@@ -25,10 +25,10 @@ $general = array(
                 <span>Index number of initial slide.</span>
                 <input 
                     id="initialSlide"
-                    name="<?php echo $this->meta_prefix.'setting_general[initialSlide]'; ?>"
+                    name="<?php echo esc_attr( $this->meta_prefix.'setting_general[initialSlide]', 'absolute-swiper' ); ?>"
                     type="number" 
                     min="0"
-                    value="<?php echo $general['initialSlide']; ?>">
+                    value="<?php echo esc_attr( $general['initialSlide'], 'absolute-swiper' ); ?>">
             </td>
         </tr>
         <tr data-filter-item data-filter-name="direction Direction">
@@ -37,7 +37,7 @@ $general = array(
             </td>
             <td>
                 <span>Could be 'horizontal' or 'vertical' (for vertical slider).</span>
-                <select name="<?php echo $this->meta_prefix.'setting_general[direction]'; ?>">
+                <select name="<?php echo esc_attr( $this->meta_prefix.'setting_general[direction]', 'absolute-swiper' ); ?>">
                     <option value="horizontal" <?php selected($general['direction'], 'horizontal') ?>>horizontal</option>
                     <option value="vertical" <?php selected($general['direction'], 'vertical') ?>>vertical</option>
                 </select>
@@ -51,11 +51,11 @@ $general = array(
                 <span>Duration of transition between slides (in ms)</span>
                 <input 
                     id="speed"
-                    name="<?php echo $this->meta_prefix.'setting_general[speed]'; ?>"
+                    name="<?php echo esc_attr( $this->meta_prefix.'setting_general[speed]', 'absolute-swiper' ); ?>"
                     type="number"
                     min="0" 
                     step="100"
-                    value="<?php echo $general['speed']; ?>">
+                    value="<?php echo esc_attr( $general['speed'], 'absolute-swiper' ); ?>">
             </td>
         </tr>
         <tr data-filter-item data-filter-name="autoHeight AutoHeight autoheight auto Auto height Height">
@@ -68,7 +68,7 @@ $general = array(
                     <li>
                         <label>
                             <input 
-                                name="<?php echo $this->meta_prefix.'setting_general[autoHeight]'; ?>"
+                                name="<?php echo esc_attr( $this->meta_prefix.'setting_general[autoHeight]', 'absolute-swiper' ); ?>"
                                 type="radio" 
                                 <?php checked( $general['autoHeight'], 'true' ); ?>
                                 value="true">True
@@ -77,7 +77,7 @@ $general = array(
                     <li>
                         <label>
                             <input 
-                                name="<?php echo $this->meta_prefix.'setting_general[autoHeight]'; ?>"
+                                name="<?php echo esc_attr( $this->meta_prefix.'setting_general[autoHeight]', 'absolute-swiper' ); ?>"
                                 type="radio" 
                                 <?php checked( $general['autoHeight'], 'false' ); ?>
                                 value="false">False
@@ -94,10 +94,10 @@ $general = array(
                 <span>Distance between slides in px.</span>
                 <input 
                     id="spaceBetween"
-                    name="<?php echo $this->meta_prefix.'setting_general[spaceBetween]'; ?>"
+                    name="<?php echo esc_attr( $this->meta_prefix.'setting_general[spaceBetween]', 'absolute-swiper' ); ?>"
                     type="number"
                     min="0" 
-                    value="<?php echo $general['spaceBetween']; ?>">
+                    value="<?php echo esc_attr( $general['spaceBetween'], 'absolute-swiper' ); ?>">
             </td>
         </tr>
         <tr data-filter-item data-filter-name="effect Effect">
@@ -106,7 +106,7 @@ $general = array(
             </td>
             <td>
                 <span>Tranisition effect.</span>
-                <select name="<?php echo $this->meta_prefix.'setting_general[effect]'; ?>">
+                <select name="<?php echo esc_attr( $this->meta_prefix.'setting_general[effect]', 'absolute-swiper' ); ?>">
                     <option value="slide" <?php selected($general['effect'], 'slide') ?>>slide</option>
                     <option value="fade" <?php selected($general['effect'], 'fade') ?>>fade</option>
                     <option value="cube" <?php selected($general['effect'], 'cube') ?>>cube</option>

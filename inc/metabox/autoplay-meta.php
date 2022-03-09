@@ -26,7 +26,7 @@ $autoplay = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_autoplay[autoplay]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[autoplay]', 'absolute-swiper' ); ?>" 
                                     value="true" 
                                     <?php checked( $autoplay['autoplay'], 'true' ); ?>> True
                             </label>
@@ -35,7 +35,7 @@ $autoplay = array(
                             <label>
                                 <input 
                                     type="radio" 
-                                    name="<?php echo $this->meta_prefix.'setting_autoplay[autoplay]'; ?>" 
+                                    name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[autoplay]', 'absolute-swiper' ); ?>" 
                                     value="false" 
                                     <?php checked( $autoplay['autoplay'], 'false' ); ?>> False
                             </label>
@@ -57,11 +57,11 @@ $autoplay = array(
                         <span>Delay between transitions (in ms).</span>
                         <input 
                             id="apDelay" 
-                            name="<?php echo $this->meta_prefix.'setting_autoplay[delay]'; ?>"
+                            name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[delay]', 'absolute-swiper' ); ?>"
                             type="number"
                             min="0"
                             step="100" 
-                            value="<?php echo $autoplay['delay']; ?>">
+                            value="<?php echo esc_attr( $autoplay['delay'], 'absolute-swiper' ); ?>">
                     </td>
                 </tr>
                 <tr data-filter-item data-filter-name="stopOnLastSlide StopOnLastSlide stoponlastslide stop Stop on On Last last slide Slide">
@@ -74,7 +74,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[stopOnLastSlide]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[stopOnLastSlide]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['stopOnLastSlide'], 'true' ); ?>
                                         value="true">True
@@ -83,7 +83,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[stopOnLastSlide]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[stopOnLastSlide]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['stopOnLastSlide'], 'false' ); ?>
                                         value="false">False
@@ -102,7 +102,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[disableOnInteraction]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[disableOnInteraction]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['disableOnInteraction'], 'true' ); ?>
                                         value="true">True
@@ -111,7 +111,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[disableOnInteraction]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[disableOnInteraction]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['disableOnInteraction'], 'false' ); ?>
                                         value="false">False
@@ -130,7 +130,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[reverseDirection]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[reverseDirection]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['reverseDirection'], 'true' ); ?>
                                         value="true">True
@@ -139,7 +139,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[reverseDirection]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[reverseDirection]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['reverseDirection'], 'false' ); ?>
                                         value="false">False
@@ -158,7 +158,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[waitForTransition]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[waitForTransition]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['waitForTransition'], 'true' ); ?>
                                         value="true">True
@@ -167,7 +167,7 @@ $autoplay = array(
                             <li>
                                 <label>
                                     <input 
-                                        name="<?php echo $this->meta_prefix.'setting_autoplay[waitForTransition]'; ?>"
+                                        name="<?php echo esc_attr( $this->meta_prefix.'setting_autoplay[waitForTransition]', 'absolute-swiper' ); ?>"
                                         type="radio" 
                                         <?php checked( $autoplay['waitForTransition'], 'false' ); ?>
                                         value="false">False
