@@ -100,7 +100,7 @@ class Absolute_Custom_Meta_Box
 
                 function showCategory() {
 
-                    let ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
+                    let ajax_url = "<?php echo esc_url( admin_url('admin-ajax.php') ); ?>";
                     let postType = $('#slider_post_type').val();
                     let post_id = $('#slider_post_type').attr('data_id');
 
@@ -182,8 +182,8 @@ class Absolute_Custom_Meta_Box
     public function wp_ajax_absp_slider_ajax_handler_fn()
     {
 
-        $post_type = esc_html($_REQUEST['post_type'], 'absolute-swiper');
-        $post_ID = esc_html($_REQUEST['post_id'], 'absolute-swiper');
+        $post_type = sanitize_text_field( $_REQUEST['post_type'] );
+        $post_ID = absint( $_REQUEST['post_id'] );
 
         $slider_post = get_post_meta($post_ID, $this->meta_prefix . "slider_post", true);
 
@@ -206,13 +206,13 @@ class Absolute_Custom_Meta_Box
             $all_categories = get_categories($args);
 
             ?>
-            <label for="slider_post_cat">Select Post Category</label>
-            <select name="<?php echo $this->meta_prefix; ?>slider_post[category]" id="slider_post_cat">
+            <label for="slider_post_cat"><?php echo esc_html('Select Post Category', 'absolute-swiper' ); ?></label>
+            <select name="<?php echo esc_attr( $this->meta_prefix ); ?>slider_post[category]" id="slider_post_cat">
                 <?php
                 foreach ($all_categories as $category) {
                     ?>
-                    <option value="<?php echo $category->name ?>" <?php selected($post_category, $category->name) ?>>
-                        <?php echo $category->name ?></option>
+                    <option value="<?php echo esc_attr( $category->name )?>" <?php selected($post_category, $category->name) ?>>
+                        <?php echo esc_html( $category->name, 'absolute-swiper' ); ?></option>
                     <?php
                 }
                 ?>
@@ -231,9 +231,9 @@ class Absolute_Custom_Meta_Box
                         <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
                             <li>
                                 <input type="hidden"
-                                       name="<?php echo $this->meta_prefix; ?>slider_post[gallery][<?php echo $key; ?>]"
-                                       value="<?php echo $value; ?>">
-                                <img class="image-preview" src="<?php echo $image[0]; ?>">
+                                       name="<?php echo esc_attr( $this->meta_prefix ); ?>slider_post[gallery][<?php echo esc_attr( $key ); ?>]"
+                                       value="<?php echo esc_attr( $value ); ?>">
+                                <img class="image-preview" src="<?php echo esc_url( $image[0] ); ?>">
                                 <div class="actionButtons">
                                     <a class="change-image button button-small" href="#"
                                        data-uploader-title="Change image"
@@ -248,28 +248,28 @@ class Absolute_Custom_Meta_Box
                         <?php endforeach; ?>
                     <?php } ?>
                 </ul>
-                <h4 class="noDataFound">No Images Selected.</h4>
+                <h4 class="noDataFound"><?php echo esc_html('No Images Selected.', 'absolute-swiper' ); ?></h4>
             </div>
 
             <div class="addfooter">
                 <a href="#" class="removeAll button button-secondary button-large">
                     <span class="dashicons dashicons-trash"></span>
-                    Empty Slider
+                    <?php echo esc_html('Empty Slider', 'absolute-swiper' ); ?>
                 </a>
                 <a href="#" class="saveAll button button-primary button-large">
                     <span class="dashicons dashicons-admin-tools"></span>
-                    Save
+                    <?php echo  esc_html('Save', 'absolute-swiper' ); ?>
                 </a>
                 <a class="gallery-add button button-primary button-large" href="#"
                    data-uploader-title="Add image(s) to gallery"
                    data-uploader-button-text="Add image(s)">
                     <span class="dashicons dashicons-plus-alt"></span>
-                    Add Images
+                   <?php echo esc_html(' Add Images', 'absolute-swiper' ); ?>
                 </a>
             </div>
             <?php
         }
-        die;
+        die();
     }
 
     /**
@@ -341,7 +341,7 @@ class Absolute_Custom_Meta_Box
         } elseif (is_array($array_or_string)) {
             foreach ($array_or_string as $key => &$value) {
                 if (is_array($value)) {
-                    // $value = as_sanitize_text_or_array_field($value);
+                     $value = as_sanitize_text_or_array_field($value);
                 } else {
                     $value = sanitize_text_field($value);
                 }
