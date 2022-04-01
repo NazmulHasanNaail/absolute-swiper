@@ -231,7 +231,7 @@ class Absolute_Custom_Meta_Box
                         <?php foreach ($ids as $key => $value) : $image = wp_get_attachment_image_src($value); ?>
                             <li>
                                 <input type="hidden"
-                                       name="<?php echo esc_attr( $this->meta_prefix ); ?>slider_post[gallery][<?php echo esc_attr( $key ); ?>]"
+                                       name="<?php echo esc_attr( $this->meta_prefix ); ?>slider_post[gallery][<?php echo sanitize_key( $key ); ?>]"
                                        value="<?php echo esc_attr( $value ); ?>">
                                 <img class="image-preview" src="<?php echo esc_url( $image[0] ); ?>">
                                 <div class="actionButtons">
@@ -334,14 +334,14 @@ class Absolute_Custom_Meta_Box
         $this->as_updatePostMeta($post_id, $this->meta_prefix, 'slider_post');
     }
 
-    function as_sanitize_text_or_array_field($array_or_string)
+    public function as_sanitize_text_or_array_field($array_or_string)
     {
         if (is_string($array_or_string)) {
             $array_or_string = sanitize_text_field($array_or_string);
         } elseif (is_array($array_or_string)) {
             foreach ($array_or_string as $key => &$value) {
                 if (is_array($value)) {
-                     $value = as_sanitize_text_or_array_field($value);
+                     $value = $this->as_sanitize_text_or_array_field($value);
                 } else {
                     $value = sanitize_text_field($value);
                 }
@@ -351,7 +351,7 @@ class Absolute_Custom_Meta_Box
         return $array_or_string;
     }
 
-    function as_updatePostMeta($id, $prefix, $name)
+    public function as_updatePostMeta($id, $prefix, $name)
     {
         if (isset($_POST[$prefix . $name])) {
             $allData = $this->as_sanitize_text_or_array_field($_POST[$prefix . $name]);

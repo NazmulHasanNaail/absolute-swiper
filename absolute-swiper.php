@@ -23,7 +23,8 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 	class Absolute_Swiper
 	{
 		public $plugin;
-		function __construct() {
+
+		public function __construct() {
 			$this->plugin = plugin_basename( __FILE__ );
 
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/meta-box-options.php' );
@@ -32,34 +33,34 @@ if ( !class_exists( 'Absolute_Swiper' ) ) {
 			$this->absolute_swiper_register();
 		}
 
-		function absolute_swiper_register() {
+		public function absolute_swiper_register() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'absolute_swiper_admin_enqueue' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'absolute_swiper_front_enqueue' ) );
 			add_action( 'init', array( $this, 'absolute_swiper_custom_post_type' ) );
 		}
 
-		function absolute_swiper_admin_enqueue() {
+		public function absolute_swiper_admin_enqueue() {
 			wp_enqueue_media();
 			wp_enqueue_style( 'absolute-admin-css', plugins_url( '/admin/css/admin.css', __FILE__ ) );
 			wp_enqueue_script( 'absolute-admin-js', plugins_url( '/admin/js/func-admin.js', __FILE__ ), array('jquery'), '1.0.0', true );
 		}
 
-		function absolute_swiper_front_enqueue() {
+		public function absolute_swiper_front_enqueue() {
 			wp_enqueue_style( 'absolute-swiper-bundle-css', plugins_url( '/public/css/swiper-bundle.min.css', __FILE__ ) );
 			wp_enqueue_style( 'absolute-swiper-main-css', plugins_url( '/public/css/main.css', __FILE__ ) );
 			wp_enqueue_script( 'absolute-swiper-bundle-js', plugins_url( '/public/js/swiper-bundle.min.js', __FILE__ ), array('jquery'), '8.0.4', true );
 			wp_enqueue_script( 'absolute-swiper-main-js', plugins_url( '/public/js/main.js', __FILE__ ), array('jquery'), '1.0.0', true );
 		}
 
-		function absolute_swiper_custom_post_type() {
+		public function absolute_swiper_custom_post_type() {
 			include_once( plugin_dir_path( __FILE__ ) . 'inc/post-types.php' );
 		}
 
-		function absolute_swiper_activate() {
+		public function absolute_swiper_activate() {
 			flush_rewrite_rules();
 		}
 
-		function absolute_swiper_deactivate() {
+		public function absolute_swiper_deactivate() {
 			flush_rewrite_rules();
 		}
 	}

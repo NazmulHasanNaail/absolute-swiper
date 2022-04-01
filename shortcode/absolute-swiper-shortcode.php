@@ -154,12 +154,12 @@ function absolute_swiper_shortcode($atts) {
 
         ?>
 
-        <div class="swiper" data-slider='AbsoluteSwiper<?php echo $atts['id']; ?>'
-            data-general='<?php echo json_encode($gene, JSON_NUMERIC_CHECK); ?>'
-            data-autoplay='<?php echo json_encode($auto, JSON_NUMERIC_CHECK); ?>'
-            data-pagination='<?php echo json_encode($pagi, JSON_NUMERIC_CHECK); ?>'
-            data-navigation='<?php echo json_encode($navi, JSON_NUMERIC_CHECK); ?>'
-            data-breakpoints='<?php echo json_encode($breakp, JSON_NUMERIC_CHECK); ?>'>
+        <div class="swiper" data-slider='AbsoluteSwiper<?php echo esc_attr( $atts['id'] ); ?>'
+            data-general='<?php echo esc_attr( json_encode($gene, JSON_NUMERIC_CHECK) ); ?>'
+            data-autoplay='<?php echo esc_attr( json_encode($auto, JSON_NUMERIC_CHECK) ); ?>'
+            data-pagination='<?php echo esc_attr( json_encode($pagi, JSON_NUMERIC_CHECK) ); ?>'
+            data-navigation='<?php echo esc_attr( json_encode($navi, JSON_NUMERIC_CHECK) ); ?>'
+            data-breakpoints='<?php echo esc_attr( json_encode($breakp, JSON_NUMERIC_CHECK) ); ?>'>
             <div class="swiper-wrapper">
                 <?php
                 while ( $my_query->have_posts() ) : $my_query->the_post();
@@ -173,7 +173,7 @@ function absolute_swiper_shortcode($atts) {
                 if ( $ids ) :
                 foreach ( $ids as $key => $value ) : $image = wp_get_attachment_image_src( $value, 'full' ); ?>
                 <div class="swiper-slide">
-                    <img class="image-preview" src="<?php echo $image[0]; ?>">
+                    <img class="image-preview" src="<?php echo esc_url( $image[0] ); ?>">
                 </div>
                 <?php
                 endforeach;
@@ -196,7 +196,7 @@ function absolute_swiper_shortcode($atts) {
                             $product = wc_get_product( get_the_ID() );
                             if( $product ): /* get the WC_Product Object */
                              ?>
-                            <span class="price"><?php echo $product->get_price_html(); ?></span>
+                            <span class="price"><?php echo esc_html( $product->get_price_html() ); ?></span>
                             <?php
                             endif;
                         }
@@ -211,12 +211,12 @@ function absolute_swiper_shortcode($atts) {
             </div>
 
             <?php if( $pagiCheck != 'false' ){ ?>
-            <div class="<?php echo as_checkit('el', $pagination); ?>"></div>
+            <div class="<?php echo esc_attr( as_checkit('el', $pagination) ); ?>"></div>
             <?php } ?>
 
             <?php if( $naviCheck != 'false' ){ ?>
-            <div class="<?php echo as_checkit('prevEl', $navigation); ?>"></div>
-            <div class="<?php echo as_checkit('nextEl', $navigation); ?>"></div>
+            <div class="<?php echo esc_attr( as_checkit('prevEl', $navigation) ); ?>"></div>
+            <div class="<?php echo esc_attr( as_checkit('nextEl', $navigation) ); ?>"></div>
             <?php } ?>
         </div>
 
