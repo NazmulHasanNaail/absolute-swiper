@@ -2,10 +2,10 @@
     <table class="carouselSettings">
         <tr data-filter-item data-filter-name="slidesPerView SlidesPerView slidesperview Slides slides per Per view View">
             <td>
-                <label>slidesPerView</label>
+                <label><?php echo esc_html('slidesPerView', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>Number of slides per view.</span>
+                <span><?php echo esc_html('Number of slides per view.', 'absolute-swiper' ); ?></span>
                 <input 
                     id="slidesPerView"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_general[slidesPerView]', 'absolute-swiper' ); ?>"
@@ -17,10 +17,10 @@
         </tr>
         <tr data-filter-item data-filter-name="slidesPerColumn SlidesPerColumn slidespercolumn slides Slides per Per column Column">
             <td>
-                <label>slidesPerColumn</label>
+                <label><?php echo esc_html('slidesPerColumn', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>Number of slides per column, for multirow layout.</span>
+                <span><?php echo  esc_html('Number of slides per column, for multirow layout.', 'absolute-swiper' ); ?></span>
                 <input 
                     id="slidesPerColumn"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_general[slidesPerColumn]', 'absolute-swiper' ); ?>"

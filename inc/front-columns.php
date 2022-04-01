@@ -20,13 +20,11 @@ function absolute_swiper_admin_columns( $columns){
 function absolute_swiper_admin_custom_column( $column, $post_id ){
 	
 	global $post;
-	$post_id = absint( $post_id );
-	$meta_prefix = '_absolute_swiper_';
 
     if( $column == 'shortcode' ){
 	?>
 		<input type="text" readonly="readonly" value='[absolute-swiper id="<?php echo esc_attr($post->ID, 'absolute-swiper') ?>"]' class="large-text code">
-		<a href="#" class="copyData">Copy to clipboard</a>
+		<a href="#" class="copyData"><?php echo esc_html('Copy to clipboard', 'absolute-swiper' ); ?></a>
 	<?php
     }
 }

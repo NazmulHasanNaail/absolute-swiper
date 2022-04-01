@@ -19,10 +19,10 @@ $general = array(
     <table class="autoPlaySettings">
         <tr data-filter-item data-filter-name="initialSlide InitialSlide initialslide initial Initial slide Slide">
             <td>
-                <label>initialSlide</label>
+                <label><?php echo esc_html('initialSlide', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>Index number of initial slide.</span>
+                <span><?php echo esc_html('Index number of initial slide.', 'absolute-swiper' ); ?></span>
                 <input 
                     id="initialSlide"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_general[initialSlide]', 'absolute-swiper' ); ?>"
@@ -33,22 +33,22 @@ $general = array(
         </tr>
         <tr data-filter-item data-filter-name="direction Direction">
             <td>
-                <label for="">direction</label> 
+                <label for=""><?php echo esc_html('direction', 'absolute-swiper') ?></label>
             </td>
             <td>
-                <span>Could be 'horizontal' or 'vertical' (for vertical slider).</span>
+                <span><?php echo esc_html("Could be 'horizontal' or 'vertical' (for vertical slider).", 'absolute-swiper'); ?></span>
                 <select name="<?php echo esc_attr( $this->meta_prefix.'setting_general[direction]', 'absolute-swiper' ); ?>">
-                    <option value="horizontal" <?php selected($general['direction'], 'horizontal') ?>>horizontal</option>
-                    <option value="vertical" <?php selected($general['direction'], 'vertical') ?>>vertical</option>
+                    <option value="horizontal" <?php selected($general['direction'], 'horizontal') ?>><?php echo esc_html('horizontal', 'absolute-swiper'); ?></option>
+                    <option value="vertical" <?php selected($general['direction'], 'vertical') ?>><?php echo esc_html('vertical', 'absolute-swiper'); ?></option>
                 </select>
             </td>
         </tr>
         <tr data-filter-item data-filter-name="speed Speed">
             <td>
-                <label for="">speed</label> 
+                <label for=""><?php echo esc_html('speed', 'absolute-swiper'); ?></label>
             </td>
             <td>
-                <span>Duration of transition between slides (in ms)</span>
+                <span><?php echo esc_html('Duration of transition between slides (in ms)', 'absolute-swiper'); ?></span>
                 <input 
                     id="speed"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_general[speed]', 'absolute-swiper' ); ?>"
@@ -60,10 +60,10 @@ $general = array(
         </tr>
         <tr data-filter-item data-filter-name="autoHeight AutoHeight autoheight auto Auto height Height">
             <td>
-                <label for="">autoHeight</label> 
+                <label for=""><?php echo esc_html('autoHeight', 'absolute-swiper'); ?></label>
             </td>
             <td>
-                <span>Set to true and slider wrapper will adopt its height to the height of the currently active slide</span>
+                <span><?php echo  esc_html('Set to true and slider wrapper will adopt its height to the height of the currently active slide','absolute-swiper'); ?></span>
                 <ul>
                     <li>
                         <label>
@@ -88,10 +88,10 @@ $general = array(
         </tr>
         <tr data-filter-item data-filter-name="spaceBetween SpaceBetween spacebetween space Space between Between">
             <td>
-                <label for="">spaceBetween</label> 
+                <label for=""><?php echo esc_html('spaceBetween', 'absolute-swiper'); ?></label>
             </td>
             <td>
-                <span>Distance between slides in px.</span>
+                <span><?php echo esc_html('Distance between slides in px.', 'absolute-swiper'); ?></span>
                 <input 
                     id="spaceBetween"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_general[spaceBetween]', 'absolute-swiper' ); ?>"
@@ -102,17 +102,17 @@ $general = array(
         </tr>
         <tr data-filter-item data-filter-name="effect Effect">
             <td>
-                <label for="">effect</label> 
+                <label for=""><?php echo esc_html('effect', 'absolute-swiper') ?></label>
             </td>
             <td>
-                <span>Tranisition effect.</span>
+                <span><?php echo esc_html('Tranisition effect.', 'absolute-swiper') ?></span>
                 <select name="<?php echo esc_attr( $this->meta_prefix.'setting_general[effect]', 'absolute-swiper' ); ?>">
-                    <option value="slide" <?php selected($general['effect'], 'slide') ?>>slide</option>
-                    <option value="fade" <?php selected($general['effect'], 'fade') ?>>fade</option>
-                    <option value="cube" <?php selected($general['effect'], 'cube') ?>>cube</option>
-                    <option value="coverflow" <?php selected($general['effect'], 'coverflow') ?>>coverflow</option>
-                    <option value="flip" <?php selected($general['effect'], 'flip') ?>>flip</option>
-                    <option value="cards" <?php selected($general['effect'], 'cards') ?>>cards</option>
+                    <option value="slide" <?php selected($general['effect'], 'slide') ?>><?php echo esc_html('slide', 'absolute-swiper'); ?></option>
+                    <option value="fade" <?php selected($general['effect'], 'fade') ?>><?php echo esc_html('fade', 'absolute-swiper'); ?></option>
+                    <option value="cube" <?php selected($general['effect'], 'cube') ?>><?php echo esc_html('cube', 'absolute-swiper'); ?></option>
+                    <option value="coverflow" <?php selected($general['effect'], 'coverflow') ?>><?php echo esc_html('coverflow', 'absolute-swiper'); ?></option>
+                    <option value="flip" <?php selected($general['effect'], 'flip') ?>><?php echo esc_html('flip', 'absolute-swiper'); ?></option>
+                    <option value="cards" <?php selected($general['effect'], 'cards') ?>><?php echo esc_html('cards', 'absolute-swiper'); ?></option>
                 </select>
             </td>
         </tr>

@@ -16,7 +16,7 @@ $navigation = array(
         <tbody>
             <tr data-filter-item data-filter-name="Navigation navigation">
                 <td>
-                    <label>Navigation</label>
+                    <label><?php echo esc_html('Navigation', 'absolute-swiper' ); ?></label>
                 </td>
                 <td>
                     <ul>
@@ -26,7 +26,8 @@ $navigation = array(
                                     type="radio" 
                                     name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[navigation]', 'absolute-swiper' ); ?>" 
                                     value="true" 
-                                    <?php checked( $navigation['navigation'], 'true' ); ?>> True
+                                    <?php checked( $navigation['navigation'], 'true' ); ?>>
+                                <?php echo esc_html('True', 'absolute-swiper' ); ?>
                             </label>
                         </li>
                         <li>
@@ -35,7 +36,8 @@ $navigation = array(
                                     type="radio" 
                                     name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[navigation]', 'absolute-swiper' ); ?>" 
                                     value="false" 
-                                    <?php checked( $navigation['navigation'], 'false' ); ?>> False
+                                    <?php checked( $navigation['navigation'], 'false' ); ?>>
+                                <?php echo esc_html('False', 'absolute-swiper' ); ?>
                             </label>
                         </li>
                     </ul>
@@ -48,10 +50,10 @@ $navigation = array(
         <table class="autoPlaySettings">
             <tr data-filter-item data-filter-name="nextEl NextEl nextel next Next el El Arrow arrow">
                 <td>
-                    <label for="nextEl">nextEl</label> 
+                    <label for="nextEl"><?php echo esc_html('nextEl', 'absolute-swiper' ); ?></label>
                 </td>
                 <td>
-                    <span>String with CSS selector or HTML element of the element that will work like "next" button after click on it</span>
+                    <span><?php echo esc_html('String with CSS selector or HTML element of the element that will work like "next" button after click on it', 'absolute-swiper' ); ?></span>
                     <input 
                             id="nextEl"
                             name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[nextEl]', 'absolute-swiper' ); ?>"
@@ -61,10 +63,10 @@ $navigation = array(
             </tr>
             <tr data-filter-item data-filter-name="prevEl PrevEl prevel prev Prev el El Arrow arrow">
                 <td>
-                    <label for="prevEl">prevEl</label> 
+                    <label for="prevEl"><?php echo esc_html('prevEl', 'absolute-swiper' ); ?></label>
                 </td>
                 <td>
-                    <span>String with CSS selector or HTML element of the element that will work like "prev" button after click on it</span>
+                    <span><?php echo  esc_html('String with CSS selector or HTML element of the element that will work like "prev" button after click on it', 'absolute-swiper' ); ?></span>
                     <input 
                             id="prevEl"
                             name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[prevEl]', 'absolute-swiper' ); ?>"
@@ -74,10 +76,10 @@ $navigation = array(
             </tr>
             <tr data-filter-item data-filter-name="disabledClass DisabledClass disabledclass disabled Disabled Class class">
                 <td>
-                    <label for="disabledClass">disabledClass</label> 
+                    <label for="disabledClass"><?php echo  esc_html('disabledClass', 'absolute-swiper' ); ?></label>
                 </td>
                 <td>
-                    <span>CSS class name added to navigation button when it becomes disabled</span>
+                    <span><?php echo esc_html('CSS class name added to navigation button when it becomes disabled', 'absolute-swiper' ); ?></span>
                     <input 
                             id="disabledClass"
                             name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[disabledClass]', 'absolute-swiper' ); ?>"
@@ -87,10 +89,10 @@ $navigation = array(
             </tr>
             <tr data-filter-item data-filter-name="hiddenClass HiddenClass hiddenclass hidden Hidden class Class">
                 <td>
-                    <label for="hiddenClass">hiddenClass</label> 
+                    <label for="hiddenClass"><?php echo esc_html('hiddenClass', 'absolute-swiper' ); ?></label>
                 </td>
                 <td>
-                    <span>CSS class name added to navigation button when it becomes hidden</span>
+                    <span><?php echo esc_html('CSS class name added to navigation button when it becomes hidden', 'absolute-swiper' ); ?></span>
                     <input 
                             id="hiddenClass"
                             name="<?php echo esc_attr( $this->meta_prefix.'setting_navigation[hiddenClass]', 'absolute-swiper' ); ?>"

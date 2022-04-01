@@ -14,14 +14,14 @@ $breakpoints = array(
 ?>
 
 <div id="absolute-swiper-tab-breakpoints" class="tabSec breakpoints">
-    <h3>Responsive Breakpoints</h3>
+    <h3><?php echo esc_html('Responsive Breakpoints', 'absolute-swiper' ); ?></h3>
     <table class="breakpointsSettings">
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 320">
             <td>
-                <label>320px</label>
+                <label><?php echo esc_html('320px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 320px</span>
+                <span><?php echo esc_html('When window width is >= 320px', 'absolute-swiper' ); ?></span>
                 <input 
                     id="breakpoints20"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[320]', 'absolute-swiper' ); ?>"
@@ -33,10 +33,10 @@ $breakpoints = array(
         </tr>
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 480">
             <td>
-                <label>480px</label>
+                <label><?php echo esc_html('480px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 480px</span>
+                <span><?php echo esc_html('When window width is >= 480px', 'absolute-swiper'); ?></span>
                 <input 
                     id="breakpoints480"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[480]', 'absolute-swiper' ); ?>"
@@ -48,10 +48,10 @@ $breakpoints = array(
         </tr>
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 640">
             <td>
-                <label>640px</label>
+                <label><?php echo esc_html('640px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 640px</span>
+                <span><?php echo esc_html('When window width is >= 640px', 'absolute-swiper' ); ?></span>
                 <input 
                     id="breakpoints640"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[640]', 'absolute-swiper' ); ?>"
@@ -63,10 +63,10 @@ $breakpoints = array(
         </tr>
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 768">
             <td>
-                <label>768px</label>
+                <label><?php echo esc_html('768px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 768px</span>
+                <span><?php echo esc_html('When window width is >= 768px', 'absolute-swiper' ); ?></span>
                 <input 
                     id="breakpoints768"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[768]', 'absolute-swiper' ); ?>"
@@ -78,11 +78,11 @@ $breakpoints = array(
         </tr>
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 980">
             <td>
-                <label>980px</label>
+                <label><?php echo  esc_html('980px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 980px</span>
-                <input 
+                <span><?php echo esc_html('When window width is >= 980px', 'absolute-swiper' ); ?></span>
+                <input
                     id="breakpoints980"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[980]', 'absolute-swiper' ); ?>"
                     type="number" 
@@ -93,10 +93,10 @@ $breakpoints = array(
         </tr>
         <tr data-filter-item data-filter-name="breakpoints Breakpoints responsive 1024">
             <td>
-                <label>1024px</label>
+                <label><?php echo esc_html('1024px', 'absolute-swiper' ); ?></label>
             </td>
             <td>
-                <span>When window width is >= 1024px</span>
+                <span><?php echo esc_html('When window width is >= 1024px', 'absolute-swiper' ); ?></span>
                 <input 
                     id="breakpoints1024"
                     name="<?php echo esc_attr( $this->meta_prefix.'setting_breakpoints[1024]', 'absolute-swiper' ); ?>"
